@@ -1,7 +1,6 @@
 # Mentally Converting Decimals to Fractions
 To convert decimals to fractions, you should know the divisibility rules, which you can find [here](/divisibility). These are not required, but will help you simplify the fraction.
 
- - [Home](/)
  - [Repeating](#repeating)
  - [Non-Repeating](#non-repeating)
  - [Combination](#combination)
