@@ -18,6 +18,8 @@ header h2 {
 }
 
 table {
+  margin-bottom: 8px;
+  
   th, td {
     padding: 8px;
   }
@@ -25,5 +27,13 @@ table {
   th {
     font-weight: bold;
     color: black;
+  }
+  
+  thead {
+    background: rgba(157,220,255,0.3);
+  }
+  
+  tbody {
+    background: rgba(157,220,255,0.1);
   }
 }
