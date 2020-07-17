@@ -18,10 +18,6 @@
       if (!(query.match(/\?v=[0-9]{6}/))) {
         window.location.search = "?v=" + Math.floor((999999 - 100000) * Math.random() + 100000);
       }
-      
-      window.onbeforeunload = function() {
-        window.location.search = "?v=" + Math.floor((999999 - 100000) * Math.random() + 100000);
-      };
     </script>
   </head>
 
