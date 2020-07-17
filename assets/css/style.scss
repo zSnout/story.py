@@ -16,3 +16,14 @@ header h2 {
     text-decoration: none;
   }
 }
+
+table {
+  th, td {
+    padding: 8px;
+  }
+  
+  thead {
+    font-weight: bold;
+    color: #9ddcff;
+  }
+}
