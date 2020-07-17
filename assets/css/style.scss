@@ -2,6 +2,21 @@
 ---
 
 @import " {{ site.theme }} ";
+
+header h2 {
+  margin-bottom: 8px;
+}
+
 header h3 {
+  color: #9ddcff;
+  text-decoration: underline;
   
+  a::after {
+    content: " · ";
+    text-decoration: none;
+  }
+  
+  a:last-child::after {
+    content: "";
+  }
 }
