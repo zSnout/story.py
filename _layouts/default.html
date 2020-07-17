@@ -97,7 +97,8 @@
         </section>
 
         <aside id="sidebar">
-          <p style='font-weight: bold'>Recently Visited</p>
+          <p style='font-weight: bold' id='recently-visited'>Recently Visited</p>
+          <p style='font-weight: bold' id='config'>Preferences</p>
         </aside>
       </div>
     </div>
@@ -127,13 +128,17 @@
         title: title
       });
       
-      recent = recent.slice(0,5);
+      recent = recent.slice(0,getConfig("recent"));
       setCookie("recent",JSON.stringify(recent));
       
-      var sidebar = document.getElementById("sidebar");
+      var recent = document.getElementById("recently-visited");
       for (var i = 0;i < recent.length;i++) {
-        sidebar.innerHTML += "<p><a href='" + recent[i].path.replace(/'/g,"&apos;") + "'>" + recent[i].title.replace(/</,"&lt;") + "</a></p>";
+        recent.outerHTML += "<p><a href='" + recent[i].path.replace(/'/g,"&apos;") + "'>" + recent[i].title.replace(/</,"&lt;") + "</a></p>";
       }
+      
+      var config = document.getElementById("config");
+      config.outerHTML += "<p><a href='javascript:setConfig(\"recent\",10)'>Remember Last 10</a></p>";
+      config.outerHTML += "<p><a href='javascript:setConfig(\"recent\",5)'>Remember Last 5</a></p>";
     </script>
   </body>
 </html>
