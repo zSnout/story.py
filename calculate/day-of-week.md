@@ -12,4 +12,36 @@ As we explain the process, we'll use `December 16, 2482` as an example.
 
  1. Take the last two digits of the year. In our example, this is `82`.
  2. Divide by 4, and drop any remainder. For us, we do `82 / 4 = 20.5 --> 20`.
- 3. 
+ 3. Add the date of the month. We'll do `20 + 16 = 36`.
+ 4. Add the month's value from the following table. In our example, this is `6`, so we do `36 + 6 = 42`.
+     |    Month | Value |  Month | Value |     Month | Value |
+     |---------:|-------|-------:|-------|----------:|-------|
+     |  January | 1*    |    May | 2     | September | 6     |
+     | February | 4*    |   June | 5     |   October | 1     |
+     |    March | 4     |   July | 0     |  November | 4     |
+     |    April | 0     | August | 3     |  December | 6     |
+     
+     If the year in question is a leap year, add one to month codes with a `*`.
+     
+ 5. Add the century code from the following table. In our example, this is `6`, so we do `42 + 6 = 48`.
+     |                   Century | Value |
+     |--------------------------:|-------|
+     | 1700s, 2100s, 2500s, etc. | 4     |
+     | 1800s, 2200s, 2600s, etc. | 2     |
+     | 1900s, 2300s, 2700s, etc. | 0     |
+     | 2000s, 2400s, 2800s, etc. | 6     |
+     
+ 6. Add the last two digits of the year. In our example, this was `82`, so we do `48 + 82 = 130`.
+ 7. Divide by 7 and take the remainder. In our example, this is `130 / 7 = 18r4 --> 4`.
+ 8. Find your day in the following table. In our example, this is `4 = Wednesday`.
+     | Value | Day       |
+     |------:|-----------|
+     |     1 | Sunday    |
+     |     2 | Monday    |
+     |     3 | Tuesday   |
+     |     4 | Wednesday |
+     |     5 | Thursday  |
+     |     6 | Friday    |
+     |     0 | Saturday  |
+     
+ 9. Done!
