@@ -1,5 +1,6 @@
 # Math.zSnout.com
- - [Main](#main)
+ - [Uncategorized](#uncategorized)
 
-## Main
+## Uncategorized
  - [Mentally Converting Decimals to Fractions](/decimal-to-fraction)
+ - [Divisibility Rules](/divisibility)
