@@ -12,12 +12,19 @@
     <![endif]-->
 
 {% seo %}
+    
+    <script>
+      var query = window.location.search;
+      if (!(query.match(/\?v=[0-9]{10}/))) {
+        window.location.search = "?v=" + Math.floor((999999 - 100000) * Math.random() + 100000);
+      }
+    </script>
   </head>
 
   <body>
     <header>
       <div class="inner">
-        <!--a href="{{ '/' | absolute_url }}">
+        <a href="{{ '/' | absolute_url }}">
           <h1>{{ site.title | default: site.github.repository_name }}</h1>
         </a>
         <h2>{{ site.description | default: site.github.project_tagline }}</h2>
@@ -26,7 +33,7 @@
         {% endif %}
         {% if site.github.is_user_page %}
           <a href="{{ site.github.owner_url }}" class="button"><small>Follow me on</small> GitHub</a>
-        {% endif %} -->
+        {% endif %}
       </div>
     </header>
 
