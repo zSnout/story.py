@@ -28,3 +28,7 @@ To check if a number is divisible by 4, check if the last two digits are divisib
 ### 5
 To check if a number is divisible by 5, check if it ends in `0` or `5`. If it does, it's divisible by 5.
 > `582` is not divisible by 5 because it ends in `2`.
+
+### 6
+A number is divisible by 6 if it is divisible by [2](#2) and [3](#3).
+> `67` is not divisible by 6 because it is not divisible by 2.
