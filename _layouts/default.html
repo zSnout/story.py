@@ -63,9 +63,7 @@
       try {
         JSON.parse(getCookie("config"));
       } catch {
-        var config = {
-          recent: 5
-        };
+        var config = {};
         
         setCookie("config",JSON.stringify(config));
       }
@@ -98,7 +96,7 @@
 
         <aside id="sidebar">
           <p style="font-weight: bold" id="recently-visited">Recently Visited</p>
-          <p style="font-weight: bold" id="config">Preferences</p>
+          <!-- <p style="font-weight: bold" id="config">Preferences</p> -->
           <p style="font-weight: bold" id="detail">Contents</p>
         </aside>
       </div>
@@ -129,7 +127,7 @@
         title: title
       });
       
-      recent = recent.slice(0,getConfig("recent"));
+      recent = recent.slice(0,6);
       setCookie("recent",JSON.stringify(recent));
       
       var recentEl = document.getElementById("recently-visited");
@@ -144,10 +142,6 @@
       if (recentEl2) {
         recentEl2.insertAdjacentHTML("afterend","<ul>" + recentHTML + "</ul>");
       }
-      
-      var config = document.getElementById("config");
-      config.insertAdjacentHTML("afterend","<p><a href='#' onclick='setConfig(\"recent\",5);alert(\"Your preferences have been saved.\")'>Remember Last 5</a></p>");
-      config.insertAdjacentHTML("afterend","<p><a href='#' onclick='setConfig(\"recent\",10);alert(\"Your preferences have been saved.\")'>Remember Last 10</a></p>");
       
       var headings = document.getElementById("main-content").querySelectorAll("h2");
       var html = [];
