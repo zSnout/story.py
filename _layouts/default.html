@@ -80,12 +80,14 @@
 
         <aside id="sidebar">
           <p><a href="/">Go Home</a></p>
+          <p style='font-weight: bold'>Recently Visited</p>
         </aside>
       </div>
     </div>
     
     <script>
       var title = document.getElementById("main-content").getElementsByTagName("h1")[0].textContent;
+      document.getElementsByTagName("title")[0].textContent = title;
       
       var recent = getCookie("recent");
       try {
@@ -95,16 +97,22 @@
       }
       
       var path = window.location.pathname;
-      if (recent[0] != path) {
+      if (recent.length >= 1 && recent[0].path !== path) {
         recent.unshift({
           path: path,
           title: title
         });
+      } else if (recent.length >= 1) {
+        recent[0].title = title;
       }
+      
       recent = recent.slice(0,5);
       setCookie("recent",JSON.stringify(recent));
       
-      document.getElementsByTagName("title")[0].textContent = title;
+      var sidebar = document.getElementById("sidebar");
+      for (var i = 0;i < recent.length;i++) {
+        sidebar.innerHTML += "<p><a href='" + recent[i].path.replace(/'/g,"&apos;") + "'>" + recent[i].title.replace(/</,"&lt;") + "</a></p>";
+      }
     </script>
   </body>
 </html>
