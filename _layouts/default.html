@@ -165,7 +165,7 @@
         var pos = all.indexOf(headings[i]);
         var sub = [];
         for (var j = pos + 1;j < all.length;j++) {
-          if (all[j].tagType == "h2") {
+          if (all[j].tagName.toLowerCase() == "h2") {
             break;
           } else {
             tree[i].sub.push({
