@@ -4,8 +4,9 @@
 @import " {{ site.theme }} ";
 
 header h2 {
+  color: #9ddcff;
+  
   a {
-    color: #9ddcff;
     text-decoration: underline;
   }
 }
