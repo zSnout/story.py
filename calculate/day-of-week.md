@@ -11,15 +11,8 @@ As we explain the process, we'll use `December 16, 2482` as an example.
  2. Divide by 4, and drop any remainder. For us, we do `82 / 4 = 20.5 --> 20`.
  3. Add the date of the month. We'll do `20 + 16 = 36`.
  4. Add the month's value from the following table. In our example, this is `6`, so we do `36 + 6 = 42`.
-     | Month    | Value | Month  | Value | Month     | Value |
-     |----------|-------|--------|-------|-----------|-------|
-     | January  | 1\*   | May    | 2     | September | 6     |
-     | February | 4\*   | June   | 5     | October   | 1     |
-     | March    | 4     | July   | 0     | November  | 4     |
-     | April    | 0     | August | 3     | December  | 6     |
-     
+     <table><tr><td>Month</td><td>Value</td><td>Month</td><td>Value</td><td>Month</td><td>Value</td></tr><tr><td>January</td><td>1*</td><td>May</td><td>2</td><td>September</td><td>6</td></tr><tr><td>February</td><td>4*</td><td>June</td><td>5</td><td>October</td><td>1</td></tr><tr><td>March</td><td>4</td><td>July</td><td>0</td><td>November</td><td>4</td></tr><tr><td>April</td><td>0</td><td>August</td><td>3</td><td>December</td><td>6</td></tr></table>
      If the year in question is a leap year, add one to month codes with a `*`.
-     
  5. Add the century code from the following table. In our example, this is `6`, so we do `42 + 6 = 48`.
      
      |                   Century | Value |
