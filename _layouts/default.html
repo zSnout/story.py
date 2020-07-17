@@ -79,7 +79,6 @@
         </section>
 
         <aside id="sidebar">
-          <p><a href="/">Go Home</a></p>
           <p style='font-weight: bold'>Recently Visited</p>
         </aside>
       </div>
@@ -105,7 +104,6 @@
       }
       
       recent = recent.slice(0,5);
-      recent = [];
       setCookie("recent",JSON.stringify(recent));
       
       var sidebar = document.getElementById("sidebar");
