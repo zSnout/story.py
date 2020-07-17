@@ -36,6 +36,6 @@ An example of a combination is `0.1666...`.
  7. Create this fraction: `n / c`, and simplify it. We'll call this `x`. For us, `x = 1/10`.
  8. Create this fraction: `r / (d * c)`, and simplify it. We'll call this `y`. For us, `y = 6/90 = 1/15`.
  9. Add `x` to `y`. For us, this gives `25/150`.
-   - Remember that `a/b + c/d = (a*d + b*c) / (b * d)`.
-   - Also remember that `1/a + 1/b = (a + b) / (a * b)`.
+     - Remember that `a/b + c/d = (a*d + b*c) / (b * d)`.
+     - Also remember that `1/a + 1/b = (a + b) / (a * b)`.
  10. Simplify this fraction. For us, this is `25/150 = 1/6`.
