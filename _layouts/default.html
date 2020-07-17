@@ -11,7 +11,7 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
 
-    <title>{{ site.title }}</title>
+    <title>Math.zSnout.com</title>
     <meta name="generator" content="Jekyll v3.8.7" />
     <meta property="og:title" content="Math.zSnout.com" />
     <meta property="og:locale" content="en_US" />
@@ -85,7 +85,8 @@
     </div>
     
     <script>
-      var title = document.getElementsByTagName("title")[0].textContent;
+      var title = document.getElementById("main-content").getElementsByTagName("h1")[0].textContent;
+      document.getElementsByTagName("title")[0].textContent = title;
       
       var recent = getCookie("recent");
       try {
