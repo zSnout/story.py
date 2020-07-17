@@ -145,7 +145,7 @@
       var html = [];
       
       for (var i = 0;i < headings.length;i++) {
-        html[i] = "<a href='" + headings[i].getAttribute("id").replace(/'/g,"&apos;") + "'>" + headings[i].textContent.replace(/</g,"&lt;") + "</a>";
+        html[i] = "<a href='#" + headings[i].getAttribute("id").replace(/'/g,"&apos;") + "'>" + headings[i].textContent.replace(/</g,"&lt;") + "</a>";
       }
       
       html = html.join(" &middot; ");
