@@ -97,7 +97,7 @@
         <aside id="sidebar">
           <p style="font-weight: bold" id="recently-visited">Recently Visited</p>
           <!-- <p style="font-weight: bold" id="config">Preferences</p> -->
-          <p style="font-weight: bold" id="detail">Contents</p>
+          <p style="font-weight: bold" id="sidebar-contents">Contents</p>
         </aside>
       </div>
     </div>
@@ -143,15 +143,32 @@
         recentEl2.insertAdjacentHTML("afterend","<ul>" + recentHTML + "</ul>");
       }
       
-      var headings = document.getElementById("main-content").querySelectorAll("h2");
+      var headings = document.getElementById("main-content").querySelectorAll("h2, h3");
       var html = [];
+      var detail = [];
       
       for (var i = 0;i < headings.length;i++) {
         html[i] = "<a href='#" + headings[i].getAttribute("id").replace(/'/g,"&apos;") + "'>" + headings[i].textContent.replace(/</g,"&lt;") + "</a>";
+        
+        if (headings.length > i && headings[i + 1].tagType == "h3") {
+          detail[i] = "<a href='#" + headings[i].getAttribute("id").replace(/'/g,"&apos;") + "'>" + headings[i].textContent.replace(/</g,"&lt;") + "</a>: ";
+          
+          var j = i + 1;
+          var detailed = [];
+          while (j < headings.length && headings[j].tagType == "h3") {
+            detailed.push("<a href='#" + headings[j].getAttribute("id").replace(/'/g,"&apos;") + "'>" + headings[j].textContent.replace(/</g,"&lt;") + "</a>");
+            j++;
+          }
+          detail[i] += detailed.join(" &middot; ");
+          
+          i = j;
+        } else {
+          detail[i] = "<a href='#" + headings[i].getAttribute("id").replace(/'/g,"&apos;") + "'>" + headings[i].textContent.replace(/</g,"&lt;") + "</a>";
+        }
       }
       
-      document.getElementById("contents").innerHTML = html.join(" &middot; ");
-      document.getElementById("detail").insertAdjacentHTML("afterend","<p>" + html.join("</p><p>") + "</p>");
+      document.getElementById("contents").innerHTML = detail.join("<br>");
+      document.getElementById("sidebar-contents").insertAdjacentHTML("afterend","<p>" + html.join("</p><p>") + "</p>");
     </script>
   </body>
 </html>
