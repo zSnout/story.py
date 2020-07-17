@@ -34,6 +34,7 @@ header h2 {
 table {
   margin-bottom: 8px;
   overflow-x: scroll;
+  max-width: calc(100vw - 16px);
   
   th, td {
     padding: 8px;
