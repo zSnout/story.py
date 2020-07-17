@@ -19,27 +19,40 @@
         window.location.search = "?v=" + Math.floor((999999 - 100000) * Math.random() + 100000);
       }
       
-      function setCookie(cname, cvalue, exdays) {
+      function setCookie(cname,cvalue) {
         var d = new Date();
-        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        d.setTime(d.getTime() + (7 * 24 * 60 * 60 * 1000));
         var expires = "expires="+d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        document.cookie = cname + "=" + btoa(cvalue) + ";" + expires + ";path=/";
       }
 
       function getCookie(cname) {
         var name = cname + "=";
         var ca = document.cookie.split(';');
-        for(var i = 0; i < ca.length; i++) {
+        for (var i = 0; i < ca.length; i++) {
           var c = ca[i];
           while (c.charAt(0) == ' ') {
             c = c.substring(1);
           }
           if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
+            return atob(c.substring(name.length, c.length));
           }
         }
+        
         return "";
       }
+      
+      var recent = getCookie("recent");
+      try {
+        recent = JSON.parse(recent);
+      } catch {
+        recent = [];
+      }
+      
+      var path = window.location.path;
+      recent.unshift(path);
+      recent = recent.slice(0,5);
+      setCookie("recent",JSON.stringify(recent));
     </script>
   </head>
 
@@ -50,12 +63,6 @@
           <h1>{{ site.title | default: site.github.repository_name }}</h1>
         </a>
         <h2>{{ site.description | default: site.github.project_tagline }}</h2>
-        {% if site.github.is_project_page %}
-          <a href="{{ site.github.repository_url }}" class="button"><small>View project on</small> GitHub</a>
-        {% endif %}
-        {% if site.github.is_user_page %}
-          <a href="{{ site.github.owner_url }}" class="button"><small>Follow me on</small> GitHub</a>
-        {% endif %}
       </div>
     </header>
 
@@ -69,17 +76,5 @@
           <p><a href="/">Go Home</a></p>
         </aside>
       </div>
-    </div>
-
-    {% if site.google_analytics %}
-      <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', '{{ site.google_analytics }}', 'auto');
-        ga('send', 'pageview');
-      </script>
-    {% endif %}
   </body>
 </html>
