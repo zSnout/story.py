@@ -131,9 +131,9 @@
       recent = recent.slice(0,getConfig("recent"));
       setCookie("recent",JSON.stringify(recent));
       
-      var recent = document.getElementById("recently-visited");
+      var recentEl = document.getElementById("recently-visited");
       for (var i = recent.length - 1;i >= 0;i--) {
-        recent.insertAdjacentHTML("afterend","<p><a href='" + recent[i].path.replace(/'/g,"&apos;") + "'>" + recent[i].title.replace(/</,"&lt;") + "</a></p>");
+        recentEl.insertAdjacentHTML("afterend","<p><a href='" + recent[i].path.replace(/'/g,"&apos;") + "'>" + recent[i].title.replace(/</,"&lt;") + "</a></p>");
       }
       
       var config = document.getElementById("config");
