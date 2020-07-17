@@ -150,7 +150,7 @@
       }
       
       document.getElementById("contents").innerHTML = html.join(" &middot; ");
-      document.getElementById("detail").innerHTML = "<p>" + html.join("</p><p>") + "</p>";
+      document.getElementById("detail").insertAdjacentHTML("afterend","<p>" + html.join("</p><p>") + "</p>");
     </script>
   </body>
 </html>
