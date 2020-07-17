@@ -151,6 +151,7 @@
       
       document.getElementById("contents").innerHTML = html.join(" &middot; ");
       document.getElementById("detail").insertAdjacentHTML("afterend","<p>" + html.join("</p><p>") + "</p>");
+      document.getElementById("you-recently-visited").insertAdjacentHTML("afterend","<ul><li>" + html.join("</li><li>") + "</li></ul>");
     </script>
   </body>
 </html>
