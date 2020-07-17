@@ -9,19 +9,9 @@ header h2 {
 
 header h3 {
   margin: 0;
-  color: #9ddcff;
   
   a {
     color: #9ddcff;
     text-decoration: underline;
-  }
-  
-  a::after {
-    content: " · ";
-    text-decoration: none;
-  }
-  
-  a:last-child::after {
-    content: "";
   }
 }
