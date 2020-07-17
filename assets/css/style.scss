@@ -3,6 +3,7 @@
 
 @import "{{ site.theme }}";
 
-body {
+::selection {
   background: red;
+  color: green;
 }
