@@ -143,6 +143,39 @@
         recentEl2.insertAdjacentHTML("afterend","<ul>" + recentHTML + "</ul>");
       }
       
+      function escape(text) {
+        return text
+          .replace(/&/g,"&amp;")
+          .replace(/</g,"&lt;")
+          .replace(/>/g,"&gt;")
+          .replace(/"/g,"&quot;")
+          .replace(/'/g,"&apos;");
+      }
+      
+      var tree = [];
+      var headings = Array.from(document.getElementById("main-content").getElementsByTagName("h2"));
+      var all = Array.from(document.getElementById("main-content").querySelectorAll("h2, h3"));
+      for (var i = 0;i < headings.length;i++) {
+        tree[i] = {
+          title: escape(headings[i].textContent),
+          hash: escape(headings[i].getAttribute("id")),
+          sub: []
+        };
+        
+        var pos = all.indexOf(headings[i]);
+        var sub = [];
+        for (var j = pos + 1;j < all.length;j++) {
+          if (all[j].tagType == "h2") {
+            break;
+          } else {
+            tree[i].sub.push({
+              title: escape(all[j].textContent),
+              hash: escape(all[j].getAttribute("id")
+            });
+          }
+        }
+      }
+      
       var headings = document.getElementById("main-content").querySelectorAll("h2, h3");
       var html = [];
       var detail = [];
