@@ -87,7 +87,6 @@
           <h1>{{ site.title | default: site.github.repository_name }}</h1>
         </a>
         <h2 id="contents"></h2>
-        <!-- <h2>{{ site.description | default: site.github.project_tagline }}</h2> -->
       </div>
     </header>
 
@@ -134,8 +133,12 @@
       setCookie("recent",JSON.stringify(recent));
       
       var recentEl = document.getElementById("recently-visited");
+      var recentEl2 = document.getElementById("you-recently-visited");
       for (var i = recent.length - 1;i >= 0;i--) {
         recentEl.insertAdjacentHTML("afterend","<p><a href='" + recent[i].path.replace(/'/g,"&apos;") + "'>" + recent[i].title.replace(/</,"&lt;") + "</a></p>");
+        if (recentEl2) {
+          recentEl2.insertAdjacentHTML("afterend","<p><a href='" + recent[i].path.replace(/'/g,"&apos;") + "'>" + recent[i].title.replace(/</,"&lt;") + "</a></p>");
+        }
       }
       
       var config = document.getElementById("config");
@@ -151,7 +154,6 @@
       
       document.getElementById("contents").innerHTML = html.join(" &middot; ");
       document.getElementById("detail").insertAdjacentHTML("afterend","<p>" + html.join("</p><p>") + "</p>");
-      document.getElementById("you-recently-visited").insertAdjacentHTML("afterend","<ul><li>" + html.join("</li><li>") + "</li></ul>");
     </script>
   </body>
 </html>
