@@ -4,9 +4,9 @@
 @import " {{ site.theme }} ";
 
 #sidebar {
-  top: 0;
+  top: 16px;
   position: sticky;
-  height: 100vh;
+  height: calc(100vh - 16px);
   overflow-x: hidden;
   overflow-y: scroll;
 }
