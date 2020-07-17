@@ -107,6 +107,7 @@
       }
       
       recent = recent.slice(0,5);
+      recent = [];
       setCookie("recent",JSON.stringify(recent));
       
       var sidebar = document.getElementById("sidebar");
