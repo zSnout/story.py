@@ -11,7 +11,25 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
 
-{% seo %}
+    <title>Math.zSnout.com | Learn all about cool math stuff!</title>
+    <meta name="generator" content="Jekyll v3.8.7" />
+    <meta property="og:title" content="Math.zSnout.com" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="Learn all about cool math stuff!" />
+    <meta property="og:description" content="Learn all about cool math stuff!" />
+    <link rel="canonical" href="https://new.zsnout.com/" />
+    <meta property="og:url" content="http://new.zsnout.com/" />
+    <meta property="og:site_name" content="Math.zSnout.com" />
+    <script type="application/ld+json">
+      {
+        "@type": "WebSite",
+        "headline": "Math.zSnout.com",
+        "url": "http://new.zsnout.com/",
+        "name": "Math.zSnout.com",
+        "description": "Learn all about cool math stuff!",
+        "@context": "https://schema.org"
+      }
+    </script>
     
     <script>
       var query = window.location.search;
@@ -50,7 +68,9 @@
       }
       
       var path = window.location.path;
-      recent.unshift(path);
+      if (recent[0] != path) {
+        recent.unshift(path);
+      }
       recent = recent.slice(0,5);
       setCookie("recent",JSON.stringify(recent));
     </script>
@@ -76,5 +96,10 @@
           <p><a href="/">Go Home</a></p>
         </aside>
       </div>
+    </div>
+    
+    <script>
+      document.getElementsByTagName("title")[0].textContent = JSON.stringify(recent);
+    </script>
   </body>
 </html>
