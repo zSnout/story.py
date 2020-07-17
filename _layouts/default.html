@@ -137,8 +137,8 @@
       }
       
       var config = document.getElementById("config");
-      config.insertAdjacentHTML("afterend","<p><a href='javascript:setConfig(\"recent\",5)'>Remember Last 5</a></p>");
-      config.insertAdjacentHTML("afterend","<p><a href='javascript:setConfig(\"recent\",10)'>Remember Last 10</a></p>");
+      config.insertAdjacentHTML("afterend","<p><a onclick='setConfig(\"recent\",5);alert(\"Your preferences have been saved.\")'>Remember Last 5</a></p>");
+      config.insertAdjacentHTML("afterend","<p><a onclick='setConfig(\"recent\",10);alert(\"Your preferences have been saved.\")'>Remember Last 10</a></p>");
     </script>
   </body>
 </html>
