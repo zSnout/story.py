@@ -3,6 +3,14 @@
 
 @import " {{ site.theme }} ";
 
+#sidebar {
+  top: 0;
+  position: sticky;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
 header h2 {
   color: #9ddcff;
   width: 100%;
