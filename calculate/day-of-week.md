@@ -19,12 +19,14 @@ As we explain the process, we'll use `December 16, 2482` as an example.
 
 ## Month Codes
 
-| Month    | Value | Month  | Value | Month     | Value |
-|----------|-------|--------|-------|-----------|-------|
-| January  | 1\*   | May    | 2     | September | 6     |
-| February | 4\*   | June   | 5     | October   | 1     |
-| March    | 4     | July   | 0     | November  | 4     |
-| April    | 0     | August | 3     | December  | 6     |
+| Month    | Value | Month     | Value |
+|---------:|-------|----------:|-------|
+|  January | 1\*   |      July | 0     |
+| February | 4\*   |    August | 3     |
+|    March | 4     | September | 6     |
+|    April | 0     |   October | 1     |
+|      May | 2     |  November | 4     |
+|     June | 5     |  December | 6     |
 
 For leap years, use 2 for January and 5 for February.
 
