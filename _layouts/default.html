@@ -87,7 +87,7 @@
           <h1>{{ site.title | default: site.github.repository_name }}</h1>
         </a>
         <h2>{{ site.description | default: site.github.project_tagline }}</h2>
-        <h3><a>abc</a><a>def</a><a>ghi</a></h3>
+        <h3 id="contents"></h3>
       </div>
     </header>
 
@@ -141,7 +141,15 @@
       config.insertAdjacentHTML("afterend","<p><a href='#' onclick='setConfig(\"recent\",5);alert(\"Your preferences have been saved.\")'>Remember Last 5</a></p>");
       config.insertAdjacentHTML("afterend","<p><a href='#' onclick='setConfig(\"recent\",10);alert(\"Your preferences have been saved.\")'>Remember Last 10</a></p>");
       
-      var headings = document.getElementById("main-content").querySelectorAll("h2, h3");
+      var headings = document.getElementById("main-content").querySelectorAll("h2");
+      var html = [];
+      
+      for (var i = 0;i < headings.length;i++) {
+        html[i] = "<a href='" + headings[i].getAttribute("id").replace(/'/g,"&apos;") + "'>" + headings[i].textContent.replace(/</g,"&lt;") + "</a>";
+      }
+      
+      html = html.join(" &middot; ");
+      document.getElementById("contents").innerHTML = html;
     </script>
   </body>
 </html>
