@@ -134,11 +134,15 @@
       
       var recentEl = document.getElementById("recently-visited");
       var recentEl2 = document.getElementById("you-recently-visited");
+      var recentHTML = "";
       for (var i = recent.length - 1;i >= 0;i--) {
         recentEl.insertAdjacentHTML("afterend","<p><a href='" + recent[i].path.replace(/'/g,"&apos;") + "'>" + recent[i].title.replace(/</,"&lt;") + "</a></p>");
         if (recentEl2) {
-          recentEl2.insertAdjacentHTML("afterend","<p><a href='" + recent[i].path.replace(/'/g,"&apos;") + "'>" + recent[i].title.replace(/</,"&lt;") + "</a></p>");
+          recentHTML = "<li><a href='" + recent[i].path.replace(/'/g,"&apos;") + "'>" + recent[i].title.replace(/</,"&lt;") + "</a></li>" + recentHTML;
         }
+      }
+      if (recentEl2) {
+        recentEl2.insertAdjacentHTML("afterend","<ul>" + recentHTML + "</ul>");
       }
       
       var config = document.getElementById("config");
