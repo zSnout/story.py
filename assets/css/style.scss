@@ -2,8 +2,6 @@
  ---
 
 @import "{{ site.theme }}";
-
-::selection {
-  background: red;
-  color: green;
+blockquote {
+  border: 1px solid blue;
 }
