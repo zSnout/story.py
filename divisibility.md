@@ -37,21 +37,21 @@ A number is divisible by 6 if it is divisible by [2](#2) and [3](#3).
 7 is to most complex number to check for divisibility by. While we go through the steps, we'll use `7389` as an example.
 
  1. Check if the number ends in a `0`. If it does, remove the `0` at the end. Our example number is still `7389`.
-   - If it ends in several `0`s, you can remove all of them.
+     - If it ends in several `0`s, you can remove all of them.
  2. Get the last digit of the number (`9`, in this case). Find a multiple of 7 ending in `9`. We found 49.
  3. Subtract this number from the original number. We now have `7340`.
  4. If this new number is a multiple of 7, your original number also was!
-   - You can repeat this process with the new number.
+     - You can repeat this process with the new number.
 
 Here's our full example:
  1. `7389` doesn't end in a zero.
  2. `7389 - 49` = `7340`
-   1. `7340` ends in a zero: `734`.
-   2. `734 - 14` = `720`
-     1. `720` ends in a zero: `72`.
-     2. `72 - 42` = `30`
-     3. `30` isn't a multiple of 7, so `720` isn't a multiple of 7.
-   3. `720` isn't a multiple of 7, so `7340` isn't a multiple of 7.
+     1. `7340` ends in a zero: `734`.
+     2. `734 - 14` = `720`
+         1. `720` ends in a zero: `72`.
+         2. `72 - 42` = `30`
+         3. `30` isn't a multiple of 7, so `720` isn't a multiple of 7.
+     3. `720` isn't a multiple of 7, so `7340` isn't a multiple of 7.
  3. `7340` isn't a multiple of 7, so `7389` isn't a multiple of 7.
 
 Done!
