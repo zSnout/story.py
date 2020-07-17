@@ -11,6 +11,10 @@
   overflow-y: scroll;
 }
 
+header h1 {
+  word-break: break-all;
+}
+
 header h2 {
   color: #9ddcff;
   width: 100%;
@@ -29,6 +33,7 @@ header h2 {
 
 table {
   margin-bottom: 8px;
+  overflow-x: scroll;
   
   th, td {
     padding: 8px;
