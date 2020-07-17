@@ -97,13 +97,11 @@
       }
       
       var path = window.location.pathname;
-      if (recent.length >= 1 && recent[0].path !== path) {
+      if (recent[0].path != path) {
         recent.unshift({
           path: path,
           title: title
         });
-      } else if (recent.length >= 1) {
-        recent[0].title = title;
       }
       
       recent = recent.slice(0,5);
