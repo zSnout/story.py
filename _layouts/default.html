@@ -87,6 +87,7 @@
           <h1>{{ site.title | default: site.github.repository_name }}</h1>
         </a>
         <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+        <h3>abc</h3>
       </div>
     </header>
 
@@ -139,6 +140,8 @@
       var config = document.getElementById("config");
       config.insertAdjacentHTML("afterend","<p><a href='#' onclick='setConfig(\"recent\",5);alert(\"Your preferences have been saved.\")'>Remember Last 5</a></p>");
       config.insertAdjacentHTML("afterend","<p><a href='#' onclick='setConfig(\"recent\",10);alert(\"Your preferences have been saved.\")'>Remember Last 10</a></p>");
+      
+      var headings = document.getElementById("main-content").querySelectorAll("h2, h3");
     </script>
   </body>
 </html>
