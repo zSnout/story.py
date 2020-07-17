@@ -98,8 +98,9 @@
         </section>
 
         <aside id="sidebar">
-          <p style='font-weight: bold' id='recently-visited'>Recently Visited</p>
-          <p style='font-weight: bold' id='config'>Preferences</p>
+          <p style="font-weight: bold" id="recently-visited">Recently Visited</p>
+          <p style="font-weight: bold" id="config">Preferences</p>
+          <p style="font-weight: bold" id="detail">Contents</p>
         </aside>
       </div>
     </div>
@@ -148,8 +149,8 @@
         html[i] = "<a href='#" + headings[i].getAttribute("id").replace(/'/g,"&apos;") + "'>" + headings[i].textContent.replace(/</g,"&lt;") + "</a>";
       }
       
-      html = html.join(" &middot; ");
-      document.getElementById("contents").innerHTML = html;
+      document.getElementById("contents").innerHTML = html.join(" &middot; ");
+      document.getElementById("detail").innerHTML = "<p>" + html.join("</p><p>") + "</p>";
     </script>
   </body>
 </html>
