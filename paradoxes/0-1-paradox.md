@@ -28,7 +28,7 @@ S = 1 + 0 + 0 + ...                -1 + 1 = 0
 S = 1                              No matter how many times you add zero to itself, it's still 0.
 ```
 
-## `0 = 1`
+### `0 = 1`
 We just proved that `S = 0` and `S = 1`. To show that `0 = 1`, we do this:
 
 ```
@@ -39,3 +39,32 @@ S = 1  We proved this already.
 ```
 
 Done!
+
+## Changing the Numbers
+What if you want to prove that `7 = 15` instead? Well, now that we've proved that `0 = 1`, we can either do one of two proofs.
+
+### Proof 1
+```
+0 = 1   We proved this already.
+0 = 7   Multiply both sides of 0 = 1 by 7.
+0 = 15  Multiply both sides of 0 = 1 by 15.
+0 = 0   Duh.
+7 = 15  Law of substitution.
+```
+
+### Proof 2
+```
+0 = 1   We proved this already.
+0 = 8   Multiply both sides by 8 (15 - 7).
+7 = 15  Add 7 to both sides.
+```
+
+### Combining
+We can combine these results! For example,
+```
+    0 = 1  We proved this already.
+    0 = 2  Multiply both sides of 0 = 1 by 2.
+    0 = 3  Multiply both sides of 0 = 1 by 3.
+0 = 0 = 0  Duh.
+1 = 2 = 3  Law of substitution.
+```
