@@ -325,9 +325,10 @@
               content: comment.value
             };
             
-            Radio.send(JSON.stringify(json),"page:" + window.location.pathname,"").then(function() {
-              send.insertAdjacentHTML("afterend",`<p>At <strong>${escape(json["time"])}</strong>, <strong>${escape(json["user"])}</strong> said <em>${escape(json["content"])}</em></p>`);
-            });
+            var output = `<p>At <strong>${escape(json.time)}</strong>, <strong>${escape(json.user)}</strong> said <em>${escape(json.content)}</em></p>`;
+            Radio.send(JSON.stringify(json),"page:" + window.location.pathname,"");
+            
+            send.insertAdjacentHTML("afterend",output);
             comment.value = "";
           }
           
@@ -336,7 +337,10 @@
               sendComment();
             }
           });
-          send.addEventListener("click",sendComment);
+          
+          send.addEventListener("click",function() {
+            sendComment();
+          });
         });
       });
     </script>
