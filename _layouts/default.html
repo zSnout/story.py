@@ -178,10 +178,10 @@
       
       document.getElementById("contents").innerHTML = tree.map(function(element) {
         if (element.sub.length == 0) {
-          return `<a href='${"#" + element.hash}'>${element.title}</a>`;
+          return `<a class='main' href='${"#" + element.hash}'>${element.title}</a>`;
         } else {
-          return `<a href='${"#" + element.hash}'>${element.title}</a>: ` +
-            element.sub.map(element => `<a href='${"#" + element.hash}'>${element.title}</a>`).join(" &middot; ");
+          return `<a class='main' href='${"#" + element.hash}'>${element.title}</a>: ` +
+            element.sub.map(element => `<a class='sub' href='${"#" + element.hash}'>${element.title}</a>`).join(" &middot; ");
         }
       }).join("<br>");
       
