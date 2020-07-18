@@ -91,9 +91,7 @@
   </head>
   <body>
     {% assign related = site.html_pages | where: "dir", page.dir %}
-    <div id="pages" style="display: none">
-      {% for item in related %}
-        <p><a href="{{ item.url | xml_escape }}">{{ item.title | xml_escape }}</a></p>
+    <div id="pages" style="display: none">{% for item in related %}<p><a href="{{ item.url | xml_escape }}">{{ item.title | xml_escape }}</a></p>
       {% endfor %}
     </div>
     
