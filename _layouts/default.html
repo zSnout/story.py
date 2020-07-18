@@ -234,7 +234,7 @@
         user1.send("CONFIRM" + confirmation);
         
         var user = new Radio("user:" + username,password);
-        user.getAllData().then(function() {
+        user.getData().then(function() {
           if (data.indexOf("CONFIRM" + confirmation) != -1) {
             alert("You have been logged in.");
             setConfig("username",username);
@@ -253,14 +253,17 @@
         document.getElementById("profile").insertAdjacentHTML("afterend","<p><a href='#' onclick='logIn()'>Sign Up</a></p>");
       } else {
         var login = new Promise(function(resolve,reject) {
-          var user = new Radio("user:" + username,password,function(data) {
-            if (data == "CONFIRM") {
+          var confirmation = Math.floor((999999 - 100000) * Math.random() + 100000);
+          var user1 = new Radio("user:" + username,password);
+          user1.send("CONFIRM" + confirmation);
+
+          var user = new Radio("user:" + username,password);
+          user.getData().then(function() {
+            if (data.indexOf("CONFIRM" + confirmation) != -1) {
               resolve("SUCCESS");
             } else {
               reject("FAIL");
             }
-          },function(data) {
-            // Put the second function so the first doesn't run on old data.
           });
         });
         
