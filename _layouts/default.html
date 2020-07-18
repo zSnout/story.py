@@ -18,7 +18,6 @@
     <![endif]-->
     
     <title>{{ page.title }}</title>
-    <div>{{ site.pages | jsonify | xml_escape }}</div>
     <meta name="generator" content="Jekyll v3.8.7" />
     <meta property="og:title" content="zMath" />
     <meta property="og:locale" content="en_US" />
@@ -91,6 +90,8 @@
     </script>
   </head>
   <body>
+    <div id="pages" style="display: none">{{ site.pages | jsonify | xml_escape }}</div>
+    
     <header>
       <div class="inner">
         <a href="/">
