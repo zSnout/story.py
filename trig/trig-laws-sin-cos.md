@@ -1,3 +1,8 @@
+---
+group: Trigonometry/Formulas
+keyword: trig trigonometry
+---
+
 # Laws of Sines and Cosines
 Explore the laws of sines and cosines.
 
