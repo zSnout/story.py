@@ -305,9 +305,13 @@
       var comment = document.getElementById("comment");
       var send = document.getElementById("send");
       Radio.getAll("page:" + window.location.pathname,"").then(function(data) {
+        if (data.length == 0) {
+          send.insertAdjacentHTML("afterend",`<p>This page currently has no comments.</p>`);
+        }
+        
         for (var i = 0;i < data.length;i++) {
           var json = JSON.parse(data[i]);
-          send.insertAdjacentHTML("afterend",`<p>At <strong>${escape(json.time)}</strong>, <strong>${escape(json.user)}</strong> said <em>${escape(json.content)}</em></p>`);
+          send.insertAdjacentHTML("afterend",`<p>At <strong>${escape(json.time)}</strong>, <strong>${escape(json.user)}</strong> said “<em>${escape(json.content)}</em>”</p>`);
         }
       });
       
