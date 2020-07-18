@@ -21,13 +21,16 @@ header h2 {
   margin: 0;
   
   a {
-    color: #9ddcff;
+    color: white;
     text-decoration: underline;
-  }
-  
-  a:hover {
-    color: #9ddcff;
-    text-decoration: none;
+    
+    &:hover {
+      color: #004690;
+    }
+    
+    &.sub {
+      color: #9ddcff;
+    }
   }
 }
 
