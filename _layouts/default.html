@@ -128,7 +128,7 @@
         title: title
       });
       
-      recent = recent.slice(0,6);
+      recent = recent.slice(0,{{ site.recent }});
       setCookie("recent",JSON.stringify(recent));
       
       var recentEl = document.getElementById("recently-visited");
