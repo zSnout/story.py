@@ -309,34 +309,34 @@
           var json = JSON.parse(data[i]);
           send.insertAdjacentHTML("afterend",`<p>At <strong>${escape(json.time)}</strong>, <strong>${escape(json.user)}</strong> said <em>${escape(json.content)}</em></p>`);
         }
-        
-        login.then(function() {
-          comment.style.display = "inline-block";
-          send.style.display = "inline-block";
-          
-          function sendComment() {
-            var json = {
-              time: getDate(),
-              user: getConfig("username"),
-              content: comment.value
-            };
-            
-            var output = `<p>At <strong>${escape(json.time)}</strong>, <strong>${escape(json.user)}</strong> said <em>${escape(json.content)}</em></p>`;
-            Radio.send(JSON.stringify(json),"page:" + window.location.pathname,"");
-            
-            send.insertAdjacentHTML("afterend",output);
-            comment.value = "";
-          }
-          
-          comment.addEventListener("keydown",function(evt) {
-            if (evt.keyCode == 13) {
-              sendComment();
-            }
-          });
-          
-          send.addEventListener("click",function() {
+      });
+      
+      login.then(function() {
+        comment.style.display = "inline-block";
+        send.style.display = "inline-block";
+
+        function sendComment() {
+          var json = {
+            time: getDate(),
+            user: getConfig("username"),
+            content: comment.value
+          };
+
+          var output = `<p>At <strong>${escape(json.time)}</strong>, <strong>${escape(json.user)}</strong> said <em>${escape(json.content)}</em></p>`;
+          Radio.send(JSON.stringify(json),"page:" + window.location.pathname,"");
+
+          send.insertAdjacentHTML("afterend",output);
+          comment.value = "";
+        }
+
+        comment.addEventListener("keydown",function(evt) {
+          if (evt.keyCode == 13) {
             sendComment();
-          });
+          }
+        });
+
+        send.addEventListener("click",function() {
+          sendComment();
         });
       });
     </script>
