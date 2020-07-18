@@ -155,7 +155,7 @@
       
       var tree = [];
       var headings = Array.from(document.getElementById("main-content").getElementsByTagName("h2"));
-      var all = Array.from(document.getElementById("main-content").querySelectorAll("h2, h3, table"));
+      var all = Array.from(document.getElementById("main-content").querySelectorAll("h2, h3, table, ul:not(ul ul):not(ol ul), ol:not(ul ol):not(ol ol)"));
       for (var i = 0;i < headings.length;i++) {
         tree[i] = {
           title: escape(headings[i].textContent),
@@ -165,6 +165,8 @@
         
         var pos = all.indexOf(headings[i]);
         var sub = [];
+        var tableIndex = 0;
+        var listIndex = 0;
         for (var j = pos + 1;j < all.length;j++) {
           if (all[j].tagName.toLowerCase() == "h2") {
             break;
@@ -174,10 +176,27 @@
               hash: escape(all[j].getAttribute("id"))
             });
           } else if (all[j].tagName.toLowerCase() == "table") {
-            all[j].setAttribute("id",`table-${i}-${j}`);
+            tableIndex++;
+            all[j].setAttribute("id",`table-${i}-${tableIndex}`);
+            var title = `Table ${i}-${tableIndex}: ` + Array.from(all[j].getElementsByTagName("th")).map(element => element.textContent).join(", "));
+            if (title.length > 50) {
+              title = title.substr(0,50) + "...";
+            }
             
             tree[i].sub.push({
-              title: escape("Table: " + Array.from(all[j].getElementsByTagName("th")).map(element => element.textContent).join(", ").substr(0,50)),
+              title: escape(title),
+              hash: escape(all[j].getAttribute("id"))
+            });
+          } else if (all[j].tagName.toLowerCase() == "ul" || all[j].tagName.toLowerCase() == "ol") {
+            listIndex++;
+            all[j].setAttribute("id",`list-${i}-${listIndex}`);
+            var title = `List ${i}-${listIndex}: ` + Array.from(all[j].getElementsByTagName("li")).map(element => element.textContent).join(", "));
+            if (title.length > 50) {
+              title = title.substr(0,50) + "...";
+            }
+            
+            tree[i].sub.push({
+              title: escape(title),
               hash: escape(all[j].getAttribute("id"))
             });
           }
