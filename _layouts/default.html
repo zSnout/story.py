@@ -306,12 +306,8 @@
       var send = document.getElementById("send");
       Radio.getAll("page:" + window.location.pathname,"").then(function(data) {
         for (var i = 0;i < data.length;i++) {
-          try {
-            var json = JSON.parse(data[i]);
-            send.insertAdjacentHTML("afterend",`<p>At <strong>${escape(json.time)}</strong>, <strong>${escape(json.user)}</strong> said <em>${escape(json.content)}</em></p>`);
-          } catch {
-            send.insertAdjacentHTML("afterend",`<p>${escape(data[i])}</p>`);
-          }
+          var json = JSON.parse(data[i]);
+          send.insertAdjacentHTML("afterend",`<p>At <strong>${escape(json.time)}</strong>, <strong>${escape(json.user)}</strong> said <em>${escape(json.content)}</em></p>`);
         }
         
         login.then(function() {
