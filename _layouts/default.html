@@ -90,7 +90,7 @@
     </script>
   </head>
   <body>
-    <div id="pages" style="display: none">{{ site.pages | jsonify | xml_escape }}</div>
+    <div id="pages" style="display: none">{{ site.html_pages | where: "dir", page.dir | jsonify }}</div>
     
     <header>
       <div class="inner">
@@ -124,7 +124,7 @@
       var title = document.getElementsByTagName("title")[0].textContent;
       document.getElementById("title").textContent = title;
       
-      var json = JSON.parse(document.getElementById("pages").textContent);
+      /* var json = JSON.parse(document.getElementById("pages").textContent);
       var me = json.find(el => el.url == window.location.pathname + ".html");
       if (me) {
         var related = json.filter(elem => elem.dir == me.dir);
@@ -144,7 +144,7 @@
       var relatedEl = document.getElementById("related");
       for (var i = 0;i < related.length;i++) {
         relatedEl.insertAdjacentHTML("afterend",`<p><a href='${escape(related[i].url)}'>${escape(related[i].title)}</a></p>`);
-      }
+      } */
       
       var recent = getCookie("recent");
       try {
