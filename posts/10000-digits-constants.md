@@ -1,6 +1,6 @@
 ---
-categories: [Digits/10000 Digits, Constants]
-keywords: pi e euler phi golden ratio gamma constant digit
+group: Digits/10000 Digits | Constants
+keyword: pi e euler phi golden ratio gamma
 ---
 
 # 10,000 Digits of Constants
