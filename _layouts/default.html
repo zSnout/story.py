@@ -191,10 +191,10 @@
           return `<p><a class='main' href='${"#" + element.hash}'>${element.title}</a></p>`;
         } else {
           return `<p><a class='main' href='${"#" + element.hash}'>${element.title}</a>` +
-            element.sub.map(element => `<br><span style='display: inline-block;width: 20px;'></span><a class='sub' href='${"#" + element.hash}'>${element.title}</a>`) +
+            element.sub.map(element => `<br><span style='display: inline-block;width: 20px;'></span><a class='sub' href='${"#" + element.hash}'>${element.title}</a>`).join("") +
             "</p>";
         }
-      }));
+      }).join(""));
     </script>
   </body>
 </html>
