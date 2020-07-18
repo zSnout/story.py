@@ -233,20 +233,20 @@
         
         var confirmation = Math.floor((999999 - 100000) * Math.random() + 100000);
         var user1 = new Radio("user:" + username,password);
-        user1.send("CONFIRM" + confirmation);
-        
-        var user = new Radio("user:" + username,password);
-        user.getAll().then(function(data) {
-          if (data.indexOf("CONFIRM" + confirmation) != -1) {
-            alert("You have been logged in.");
-            setConfig("username",username);
-            setConfig("password",password);
-            return window.location.reload();
-          } else {
-            if (confirm("You failed to log in. Would you like to try again?")) {
-              return logIn();
+        user1.send("CONFIRM" + confirmation).then(function() {
+          var user = new Radio("user:" + username,password);
+          user.getAll().then(function(data) {
+            if (data.indexOf("CONFIRM" + confirmation) != -1) {
+              alert("You have been logged in.");
+              setConfig("username",username);
+              setConfig("password",password);
+              return window.location.reload();
+            } else {
+              if (confirm("You failed to log in. Would you like to try again?")) {
+                return logIn();
+              }
             }
-          }
+          });
         });
       }
       
@@ -257,15 +257,15 @@
         var login = new Promise(function(resolve,reject) {
           var confirmation = Math.floor((999999 - 100000) * Math.random() + 100000);
           var user1 = new Radio("user:" + username,password);
-          user1.send("CONFIRM" + confirmation);
-
-          var user = new Radio("user:" + username,password);
-          user.getAll().then(function(data) {
-            if (data.indexOf("CONFIRM" + confirmation) != -1) {
-              resolve("SUCCESS");
-            } else {
-              reject("FAIL");
-            }
+          user1.send("CONFIRM" + confirmation).then(function() {;
+            var user = new Radio("user:" + username,password);
+            user.getAll().then(function(data) {
+              if (data.indexOf("CONFIRM" + confirmation) != -1) {
+                resolve("SUCCESS");
+              } else {
+                reject("FAIL");
+              }
+            });
           });
         });
         
