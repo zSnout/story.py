@@ -1,3 +1,7 @@
+---
+group: Integers/Powers
+---
+
 # Powers Of...
 Find different powers of any number from 1 to 10.
 
