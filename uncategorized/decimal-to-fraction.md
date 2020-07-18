@@ -1,5 +1,5 @@
 # Mentally Converting Decimals to Fractions
-To convert decimals to fractions, you should know the divisibility rules, which you can find [here](/divisibility). These are not required, but will help you simplify the fraction.
+To convert decimals to fractions, you should know the divisibility rules, which you can find [here](/uncategorized/divisibility). These are not required, but will help you simplify the fraction.
 
 ## Repeating
 An example of a repeating decimal is `0.575757...`.
