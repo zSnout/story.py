@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}" media="screen" type="text/css">
     <link rel="stylesheet" href="{{ '/assets/css/print.css' | relative_url }}" media="print" type="text/css">
-
+    <script src="https://zsnout.com/radio/main.js"></script>
+    
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
-
+    
     <title>Math.zSnout.com</title>
     <meta name="generator" content="Jekyll v3.8.7" />
     <meta property="og:title" content="zMath" />
@@ -63,7 +64,10 @@
       try {
         JSON.parse(getCookie("config"));
       } catch {
-        var config = {};
+        var config = {
+          username: "",
+          password: ""
+        };
         
         setCookie("config",JSON.stringify(config));
       }
@@ -87,16 +91,16 @@
         <h2 id="contents"></h2>
       </div>
     </header>
-
+    
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
           {{ content }}
         </section>
-
+        
         <aside id="sidebar">
           <p style="font-weight: bold" id="recently-visited">Recently Visited</p>
-          <!-- <p style="font-weight: bold" id="config">Preferences</p> -->
+          <p style="font-weight: bold" id="profile">My Account</p>
           <p style="font-weight: bold" id="sidebar-contents">Contents</p>
         </aside>
       </div>
@@ -195,6 +199,26 @@
             "</p>";
         }
       }).join(""));
+      
+      var username = getConfig("username");
+      var password = getConfig("password");
+      
+      if (username == "") {
+        document.getElementById("profile").insertAdjacentHTML("afterend","<p><a href='/special/sign-up'>Sign Up</a></p>");
+        document.getElementById("profile").insertAdjacentHTML("afterend","<p><a href='/special/log-in'>Log In</a></p>");
+      } else {
+        var login = new Promise(function(resolve,reject) {
+          var user = new Radio("user:" + username,password,function(data) {
+            if (data == "CONFIRM") {
+              resolve("SUCCESS");
+            } else {
+              reject("FAIL");
+            }
+          },function(data) {
+            // Put the second function so the first doesn't run on old data.
+          });
+        });
+      }
     </script>
   </body>
 </html>
