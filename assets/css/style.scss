@@ -66,10 +66,11 @@ pre code {
 }
 
 input, button {
-  --width: 30px;
+  --width: 100px;
   
   display: inline-block;
   border: 1px solid #808080;
+  margin-bottom: 8px;
   background: white;
   transition: 0.1s;
   outline: none;
