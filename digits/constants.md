@@ -1,5 +1,5 @@
-# 10,000 Digits of π (pi), e (Euler's constant), φ (Phi / Golden Ratio), and γ (gamma).
-On this page you can see ten thousand digits of any constant above!
+# 10,000 Digits of Constants
+On this page you can see ten thousand digits of pi, Euler's constant, phi, and gamma!
 
 ## Pi: π
 π = 3.
