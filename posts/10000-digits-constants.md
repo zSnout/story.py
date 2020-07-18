@@ -1,5 +1,5 @@
 ---
-category: ["Digits/10000 Digits","Constants"]
+categories: ["Digits/10000 Digits","Constants"]
 keywords: pi e euler phi golden ratio gamma constant digit
 ---
 
