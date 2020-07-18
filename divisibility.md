@@ -1,11 +1,6 @@
 # Divisibility Rules
 It's rather obvious to tell when a number is divisible by 2 or 5, but are there other tricks?
 
- - [2 - 10](#2-10)
- - [11, 13, 17, 19, 21, etc.](#11-13-17-19-21-etc)
- - [2, 4, 8, 16, etc.](#2-4-8-16-etc)
- - [5, 25, 125, 625, etc.](#5-25-125-625-etc)
-
 ## 2 - 10
 Here are the divisibility rules for 2 to 10.
 
