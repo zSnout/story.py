@@ -176,32 +176,16 @@
         }
       }
       
-      var headings = document.getElementById("main-content").querySelectorAll("h2, h3");
-      var html = [];
-      var detail = [];
-      
-      for (var i = 0;i < headings.length;i++) {
-        html[i] = "<a href='#" + headings[i].getAttribute("id").replace(/'/g,"&apos;") + "'>" + headings[i].textContent.replace(/</g,"&lt;") + "</a>";
-        
-        if (headings.length > i && headings[i + 1].tagType == "h3") {
-          detail[i] = "<a href='#" + headings[i].getAttribute("id").replace(/'/g,"&apos;") + "'>" + headings[i].textContent.replace(/</g,"&lt;") + "</a>: ";
-          
-          var j = i + 1;
-          var detailed = [];
-          while (j < headings.length && headings[j].tagType == "h3") {
-            detailed.push("<a href='#" + headings[j].getAttribute("id").replace(/'/g,"&apos;") + "'>" + headings[j].textContent.replace(/</g,"&lt;") + "</a>");
-            j++;
-          }
-          detail[i] += detailed.join(" &middot; ");
-          
-          i = j;
+      document.getElementById("contents").innerHTML = tree.map(function(element) {
+        if (element.sub.length == 0) {
+          return `<a href='${"#" + element.hash}'>${element.title}</a>`;
         } else {
-          detail[i] = "<a href='#" + headings[i].getAttribute("id").replace(/'/g,"&apos;") + "'>" + headings[i].textContent.replace(/</g,"&lt;") + "</a>";
+          return `<a href='${"#" + element.hash}'>${element.title}</a>: ` +
+            element.sub.map(element => `<a href='${"#" + element.hash}'>${element.title}</a>`).join(" &middot; ");
         }
-      }
+      }).join("<br>");
       
-      document.getElementById("contents").innerHTML = detail.join("<br>");
-      document.getElementById("sidebar-contents").insertAdjacentHTML("afterend","<p>" + html.join("</p><p>") + "</p>");
+      document.getElementById("sidebar-contents").insertAdjacentHTML("afterend",tree.map(element => `<p><a href='${"#" + element.hash}'>${element.title}</a></p>`);
     </script>
   </body>
 </html>
