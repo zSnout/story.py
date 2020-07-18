@@ -155,7 +155,7 @@
       
       var tree = [];
       var headings = Array.from(document.getElementById("main-content").getElementsByTagName("h2"));
-      var all = Array.from(document.getElementById("main-content").querySelectorAll("h2, h3"));
+      var all = Array.from(document.getElementById("main-content").querySelectorAll("h2, h3, table"));
       for (var i = 0;i < headings.length;i++) {
         tree[i] = {
           title: escape(headings[i].textContent),
@@ -168,9 +168,16 @@
         for (var j = pos + 1;j < all.length;j++) {
           if (all[j].tagName.toLowerCase() == "h2") {
             break;
-          } else {
+          } else if (all[j].tagName.toLowerCase() == "h3") {
             tree[i].sub.push({
-              title: escape(all[j].textContent),
+              title: "Heading: " + escape(all[j].textContent),
+              hash: escape(all[j].getAttribute("id"))
+            });
+          } else if (all[j].tagName.toLowerCase() == "table") {
+            all[j].setAttribute("id",`table-${i}-${j}`);
+            
+            tree[i].sub.push({
+              title: escape("Table: " + Array.from(all[j].getElementsByTagName("thead")).join(", ").substr(0,50)),
               hash: escape(all[j].getAttribute("id"))
             });
           }
