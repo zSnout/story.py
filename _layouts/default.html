@@ -18,6 +18,7 @@
     <![endif]-->
     
     <title>{{ page.title }}</title>
+    <div>{{ site.pages }}</div>
     <meta name="generator" content="Jekyll v3.8.7" />
     <meta property="og:title" content="zMath" />
     <meta property="og:locale" content="en_US" />
@@ -111,14 +112,15 @@
           <p style="font-weight: bold" id="recently-visited">Recently Visited</p>
           <p style="font-weight: bold" id="profile">My Account</p>
           <p style="font-weight: bold" id="sidebar-contents">Contents</p>
+          <p style="font-weight: bold" id="special">Special</p>
+          <p><a href="https://github.com/zSnout/zmath/blob/master{{ page.url }}"></a></p>
         </aside>
       </div>
     </div>
     
     <script>
-      var title = document.getElementById("main-content").getElementsByTagName("h1")[0].textContent;
-      document.getElementsByTagName("title")[0].textContent = title + " | zMath";
-      document.getElementById("title").textContent = title + " | zMath";
+      var title = document.getElementsByTagName("title")[0].textContent;
+      document.getElementById("title").textContent = title;
       
       var recent = getCookie("recent");
       try {
