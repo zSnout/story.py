@@ -82,7 +82,7 @@
     <header>
       <div class="inner">
         <a href="/">
-          <h1>zMath</h1>
+          <h1 id="title">zMath</h1>
         </a>
         <h2 id="contents"></h2>
       </div>
@@ -105,6 +105,7 @@
     <script>
       var title = document.getElementById("main-content").getElementsByTagName("h1")[0].textContent;
       document.getElementsByTagName("title")[0].textContent = title + " | zMath";
+      document.getElementById("title").textContent = title + " | zMath";
       
       var recent = getCookie("recent");
       try {
@@ -185,7 +186,15 @@
         }
       }).join("<br>");
       
-      document.getElementById("sidebar-contents").insertAdjacentHTML("afterend",tree.map(element => `<p><a href='${"#" + element.hash}'>${element.title}</a></p>`));
+      document.getElementById("sidebar-contents").insertAdjacentHTML("afterend",tree.map(function(element) {
+        if (element.sub.length == 0) {
+          return `<p><a class='main' href='${"#" + element.hash}'>${element.title}</a></p>`;
+        } else {
+          return `<p><a class='main' href='${"#" + element.hash}'>${element.title}</a>: ` +
+            element.sub.map(element => `<a class='sub' href='${"#" + element.hash}'>${element.title}</a>`).join(" &middot; ") +
+            "</p>";
+        }
+      }));
     </script>
   </body>
 </html>
