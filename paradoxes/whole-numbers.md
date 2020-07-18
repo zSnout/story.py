@@ -1,3 +1,8 @@
+---
+group: Paradoxes/Numbers
+keyword: sum series
+---
+
 # 1 + 2 + 3 + 4 + 5 + ... = -1/12
 In this article we prove that the sum of all the whole numbers is `-1/12`.
 
