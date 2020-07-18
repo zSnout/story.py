@@ -4,9 +4,9 @@ This is a list of all the pages on this site. If you have a request for a new pa
 ## You Recently Visited...
 
 ## Uncategorized
- - [Mentally Converting Decimals to Fractions](/decimal-to-fraction)
- - [Divisibility Rules](/divisibility)
- - [Powers Of...](/powers)
+ - [Mentally Converting Decimals to Fractions](/uncategorized/decimal-to-fraction)
+ - [Divisibility Rules](/uncategorized/divisibility)
+ - [Powers Of...](/uncategorized/powers)
 
 ## How to Calculate...
  - [How to Calculate the Day For Any Date](/calculate/day-of-week)
