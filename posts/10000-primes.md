@@ -1,3 +1,7 @@
+---
+group: Primes
+---
+
 # Ten Thousand Prime Numbers
 View ten thousand prime numbers on a single page!
 
