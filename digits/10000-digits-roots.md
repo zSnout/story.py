@@ -1,3 +1,8 @@
+---
+category: [Digits/10000 Digits, Roots/Square Roots]
+keyword: digit root square
+---
+
 # 10,000 Digits of Square Roots
 On this page you can see ten thousand digits of the square roots of `2`, `3`, and `5`!
 
