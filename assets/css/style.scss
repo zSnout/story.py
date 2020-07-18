@@ -65,9 +65,9 @@ pre code {
   background: transparent;
 }
 
-$button: 30px;
-
 input, button {
+  --width: 30px;
+  
   display: inline-block;
   padding: 8px;
   border: 1px solid #808080;
@@ -76,11 +76,11 @@ input, button {
 input {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-  width: calc(100% - 35px - $button);
+  width: calc(100% - 35px - var(--width));
 }
 
 button {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
-  width: $button;
+  width: var(--width);
 }
