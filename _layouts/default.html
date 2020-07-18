@@ -112,10 +112,9 @@
           <p style="font-weight: bold" id="profile">My Account</p>
           <p style="font-weight: bold" id="sidebar-contents">Contents</p>
           <p style="font-weight: bold" id="related">Related</p>
-          {% assign related = site.html_pages | where: "dir", page.dir %}{% for item in related %}
+          {% assign related = site.html_pages | where: "dir", page.dir %}
+          <p><a href="https://github.com/zSnout/zmath/blob/master{{ page.url }}">This Page's Source</a></p>{% for item in related %}
           <p><a href="{{ item.url | remove: ".html" | xml_escape }}">{{ item.title | xml_escape }}</a></p>{% endfor %}
-          <p style="font-weight: bold" id="special">Special</p>
-          <p><a href="https://github.com/zSnout/zmath/blob/master{{ page.url }}">Source</a></p>
         </aside>
       </div>
     </div>
