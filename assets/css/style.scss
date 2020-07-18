@@ -26,14 +26,14 @@ header h2 {
     transition: 0.3s;
     
     &:hover {
-      color: #004690;
+      color: black;
     }
     
     &.sub {
       color: #9ddcff;
       
       &:hover {
-        color: #004690;
+        color: black;
       }
     }
   }
