@@ -124,6 +124,28 @@
       var title = document.getElementsByTagName("title")[0].textContent;
       document.getElementById("title").textContent = title;
       
+      var json = JSON.parse(document.getElementById("pages").textContent);
+      var me = json.find(el => el.url == window.location.pathname + ".html");
+      if (me) {
+        var related = json.filter(elem => elem.dir == me.dir);
+      } else {
+        var related = [];
+      }
+      related = related.filter(elem => elem != me);
+
+      for (var i = 0;i < related.length;i++) {
+        related[i] = {
+          title: related[i].title,
+          url: related[i].url
+        };
+        related[i].url = related[i].url.substr(0,related[i].url.length - 5);
+      }
+
+      var relatedEl = document.getElementById("related");
+      for (var i = 0;i < related.length;i++) {
+        relatedEl.insertAdjacentHTML("afterend",`<p><a href='${escape(related[i].url)}'>${escape(related[i].title)}</a></p>`);
+      }
+      
       var recent = getCookie("recent");
       try {
         recent = JSON.parse(recent);
@@ -347,28 +369,6 @@
           sendComment();
         });
       });
-      
-      var json = JSON.parse(document.getElementById("pages").textContent);
-      var me = json.find(el => el.url == window.location.pathname + ".html");
-      if (me) {
-        var related = json.filter(elem => elem.dir == me.dir);
-      } else {
-        var related = [];
-      }
-      related = related.filter(elem => elem != me);
-
-      for (var i = 0;i < related.length;i++) {
-        related[i] = {
-          title: related[i].title,
-          url: related[i].url
-        };
-        related[i].url = related[i].url.substr(-5);
-      }
-
-      var relatedEl = document.getElementById("related");
-      for (var i = 0;i < related.length;i++) {
-        relatedEl.insertAdjacentHTML("afterend",`<p><a href='${escape(related[i].url)}'>${escape(related[i].title)}</a></p>`);
-      }
     </script>
   </body>
 </html>
