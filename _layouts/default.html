@@ -177,7 +177,7 @@
             all[j].setAttribute("id",`table-${i}-${j}`);
             
             tree[i].sub.push({
-              title: escape("Table: " + Array.from(all[j].getElementsByTagName("th")).join(", ").substr(0,50)),
+              title: escape("Table: " + Array.from(all[j].getElementsByTagName("th")).map(element => element.textContent).join(", ").substr(0,50)),
               hash: escape(all[j].getAttribute("id"))
             });
           }
