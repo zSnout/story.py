@@ -113,8 +113,9 @@
           <p style="font-weight: bold" id="recently-visited">Recently Visited</p>
           <p style="font-weight: bold" id="profile">My Account</p>
           <p style="font-weight: bold" id="sidebar-contents">Contents</p>
+          <p style="font-weight: bold" id="related">Related</p>
           <p style="font-weight: bold" id="special">Special</p>
-          <p><a href="https://github.com/zSnout/zmath/blob/master{{ page.url }}"></a></p>
+          <p><a href="https://github.com/zSnout/zmath/blob/master{{ page.url }}">Source</a></p>
         </aside>
       </div>
     </div>
@@ -346,6 +347,20 @@
           sendComment();
         });
       });
+      
+      var json = JSON.parse(document.getElementById("pages").textContent);
+      var me = json.find(el => el.url == window.location.pathname + ".html");
+      if (me) {
+          var related = json.filter(elem => elem.dir == me.dir);
+      } else {
+          var related = [];
+      }
+      related = related.filter(elem => elem != me);
+      
+      var relatedEl = document.getElementById("related");
+      for (var i = 0;i < related.length;i++) {
+        relatedEl.insertAdjacentHTML("afterend",`<p><a href='${related[i].url.substr(related[i].url.length - 5)}'>${related[i].title}</a></p>`);
+      }
     </script>
   </body>
 </html>
