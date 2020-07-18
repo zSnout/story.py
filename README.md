@@ -1,5 +1,5 @@
-# Math.zSnout.com
-This is a list of all the pages on this site. If you have a request for a new page, please [start an issue in this site's GitHub repository](https://zsnout.com/l/github-issue-v1).
+# Sitemap
+This is a list of all the pages on this site. If you have a request for a new page, please [start an issue in this site's GitHub repository](https://zsnout.com/l/github-issue-v1). You can also view the original version of this site, published on Google Sites, at [this link](https://sites.google.com/view/mathissocool/).
 
 ## You Recently Visited...
 
@@ -13,3 +13,6 @@ This is a list of all the pages on this site. If you have a request for a new pa
 ## Ten Thousand Digits of...
  - [Constants (pi, e, phi, gamma)](/digits/constants)
  - [Square Roots (√2, √3, √5)](/digits/square-roots)
+
+## Trigonometry
+ - [Laws of Sines and Cosines](/trig/laws-sin-cos)
