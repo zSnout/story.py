@@ -6,6 +6,7 @@ This is a list of all the pages on this site. If you have a request for a new pa
 ## Uncategorized
  - [Mentally Converting Decimals to Fractions](/decimal-to-fraction)
  - [Divisibility Rules](/divisibility)
+ - [Powers Of...](/powers)
 
 ## How to Calculate...
  - [How to Calculate the Day For Any Date](/calculate/day-of-week)
@@ -16,3 +17,6 @@ This is a list of all the pages on this site. If you have a request for a new pa
 
 ## Trigonometry
  - [Laws of Sines and Cosines](/trig/laws-sin-cos)
+
+## Primes
+ - [Ten Thousand Primes](/primes/all)
