@@ -1,3 +1,8 @@
+---
+group: Calculate/Date
+keyword: week
+---
+
 # How to Calculate the Day For Any Date
 Ever wondered what day your friend's birthday occurred, or whether the next July 4th will be a Thursday?
 
