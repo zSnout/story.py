@@ -22,4 +22,5 @@ This is a list of all the pages on this site. If you have a request for a new pa
  - [Ten Thousand Primes](/primes/all)
 
 ## Paradoxes
- - [`0 = 1` Paradox](/paradoxes/0-1-paradox)
+ - [0 = 1](/paradoxes/0-1-paradox)
+ - [1 + 2 + 3 ... = -1/12](/paradoxes/whole-numbers)
