@@ -20,3 +20,6 @@ This is a list of all the pages on this site. If you have a request for a new pa
 
 ## Primes
  - [Ten Thousand Primes](/primes/all)
+
+## Paradoxes
+ - [`0 = 1` Paradox](/paradoxes/0-1-paradox)
