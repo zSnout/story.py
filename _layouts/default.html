@@ -287,14 +287,28 @@
         });
       }
       
+      function getDate() {
+        var date = new Date();
+        var dateMin = date.getMinutes();
+        if (dateMin < 10) {
+          dateMin = "0" + dateMin;
+        }
+
+        return (date.getMonth() + 1) + "/" + (date.getDate()) +
+          ", " +
+          (date.getHours() > 12 ?
+            (date.getHours() - 12) + ":" + dateMin + " PM" :
+            (date.getHours() + ":" + dateMin + " AM"));
+      }
+      
       var comments = document.getElementById("comments");
       var comment = document.getElementById("comment");
       var send = document.getElementById("send");
-      Radio.getAll("path:" + window.location.pathname,"").then(function(data) {
+      Radio.getAll("page:" + window.location.pathname,"").then(function(data) {
         for (var i = 0;i < comments.length;i++) {
           try {
             var json = JSON.parse(data[i]);
-            send.insertAdjacentHTML("afterend",`<p><strong>${escape(json["user"])}</strong> ${escape(json["content"])}</p>`);
+            send.insertAdjacentHTML("afterend",`<p>At <strong>${escape(json["time"])}</strong>, <strong>${escape(json["user"])}</strong> said <em>${escape(json["content"])}</em></p>`);
           } catch {
             send.insertAdjacentHTML("afterend",`<p>${escape(data[i])}</p>`);
           }
@@ -305,7 +319,15 @@
           send.style.display = "inline-block";
           
           function sendComment() {
-            alert("sent: " + comment.value);
+            var json = {
+              date: getDate(),
+              user: getConfig("username"),
+              content: comment.value
+            };
+            
+            Radio.send(JSON.stringify(json),"page:" + window.location.pathname,"").then(function() {
+              send.insertAdjacentHTML("afterend",`<p>At <strong>${escape(json["time"])}</strong>, <strong>${escape(json["user"])}</strong> said <em>${escape(json["content"])}</em></p>`);
+            });
             comment.value = "";
           }
           
