@@ -90,7 +90,7 @@
     </script>
   </head>
   <body>
-    <div id="pages" style="display: none">{{ site.html_pages | where: "dir", page.dir | jsonify }}</div>
+    <div id="pages" style="display: none">{{ site.html_pages | where: "dir", page.dir | jsonify | xml_escape }}</div>
     
     <header>
       <div class="inner">
