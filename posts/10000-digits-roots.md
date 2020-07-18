@@ -1,6 +1,5 @@
 ---
-category: [Digits/10000 Digits, Roots/Square Roots]
-keyword: digit root square
+group: Digits/10000 Digits | Roots/Square Roots
 ---
 
 # 10,000 Digits of Square Roots
