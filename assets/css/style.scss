@@ -64,3 +64,23 @@ table {
 pre code {
   background: transparent;
 }
+
+$button = 30px;
+
+input, button {
+  display: inline-block;
+  padding: 8px;
+  border: 1px solid #808080;
+}
+
+input {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  width: calc(100% - 35px - $button);
+}
+
+button {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  width: $button;
+}
