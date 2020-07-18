@@ -155,7 +155,7 @@
       
       var tree = [];
       var headings = Array.from(document.getElementById("main-content").getElementsByTagName("h2"));
-      var all = Array.from(document.getElementById("main-content").querySelectorAll("h2, h3, table, ul:not(ul ul):not(ol ul), ol:not(ul ol):not(ol ol)"));
+      var all = Array.from(document.getElementById("main-content").querySelectorAll("h2, h3, table, #main-content > ul, #main-content > ol"));
       for (var i = 0;i < headings.length;i++) {
         tree[i] = {
           title: escape(headings[i].textContent),
