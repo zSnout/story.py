@@ -208,9 +208,49 @@
       var username = getConfig("username");
       var password = getConfig("password");
       
+      function logIn() {
+        var username = prompt("Username...");
+        if (!username.match(/^[a-zA-Z0-9_]{2,30}$/)) {
+          alert("Sorry, your username can only have letters, numbers, and underscores, and must be 2-30 characters long.");
+          if (confirm("Would you like to try logging in again?")) {
+            return logIn();
+          } else {
+            return;
+          }
+        }
+        
+        var password = prompt("Password...");
+        if (!password.length >= 8 || password.replace(/[A-Z]/g) == password || password.replace(/[a-z]/g) == password || password.replace(/[0-9]/g) == password) {
+          alert("Sorry, your password MUST have at least one uppercase letter, one lowercase letter, and one number, and must be 8-30 characters long.");
+          if (confirm("Would you like to try logging in again?")) {
+            return logIn();
+          } else {
+            return;
+          }
+        }
+        
+        var confirmation = Math.floor((999999 - 100000) * Math.random() + 100000);
+        var user1 = new Radio("user:" + username,password);
+        user1.send("CONFIRM" + confirmation);
+        
+        var user = new Radio("user:" + username,password);
+        user.getAllData().then(function() {
+          if (data.indexOf("CONFIRM" + confirmation) != -1) {
+            alert("You have been logged in.");
+            setConfig("username",username);
+            setConfig("password",password);
+            return window.location.reload();
+          } else {
+            if (confirm("You failed to log in. Would you like to try again?")) {
+              return logIn();
+            }
+          }
+        });
+      }
+      
       if (username == "") {
-        document.getElementById("profile").insertAdjacentHTML("afterend","<p><a href='/special/sign-up'>Sign Up</a></p>");
-        document.getElementById("profile").insertAdjacentHTML("afterend","<p><a href='/special/log-in'>Log In</a></p>");
+        document.getElementById("profile").insertAdjacentHTML("afterend","<p><a href='#' onclick='logIn()'>Log In</a></p>");
+        document.getElementById("profile").insertAdjacentHTML("afterend","<p><a href='#' onclick='logIn()'>Sign Up</a></p>");
       } else {
         var login = new Promise(function(resolve,reject) {
           var user = new Radio("user:" + username,password,function(data) {
@@ -222,6 +262,14 @@
           },function(data) {
             // Put the second function so the first doesn't run on old data.
           });
+        });
+        
+        login.then(function() {
+          document.getElementById("profile").insertAdjacentHTML("afterend","<p>" + username + "</p>");
+          document.getElementById("profile").insertAdjacentHTML("afterend","<p><a href='#' onclick='logOut()'>Log Out</a></p>");
+        },function() {
+          document.getElementById("profile").insertAdjacentHTML("afterend","<p><a href='#' onclick='logIn()'>Log In</a></p>");
+          document.getElementById("profile").insertAdjacentHTML("afterend","<p><a href='#' onclick='logIn()'>Sign Up</a></p>");
         });
       }
     </script>
