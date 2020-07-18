@@ -69,17 +69,32 @@ input, button {
   --width: 30px;
   
   display: inline-block;
-  padding: 8px;
   border: 1px solid #808080;
+  background: white;
+  transition: 0.1s;
+  outline: none;
+  
+  &:focus {
+    outline: none;
+  }
+  
+  &:hover, &:focus {
+    background: #e0e0e0;
+  }
 }
 
 input {
+  padding: 10.5px;
+  position: relative;
+  top: 1px;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   width: calc(100% - 35px - var(--width));
+  border-right: none;
 }
 
 button {
+  padding: 8px;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   width: var(--width);
