@@ -1,3 +1,7 @@
+---
+category: ["Digits/10000 Digits"]
+---
+
 # 10,000 Digits of Constants
 On this page you can see ten thousand digits of pi, Euler's constant, phi, and gamma!
 
