@@ -23,6 +23,7 @@ header h2 {
   a {
     color: white;
     text-decoration: underline;
+    transition: 0.3s;
     
     &:hover {
       color: #004690;
@@ -30,6 +31,10 @@ header h2 {
     
     &.sub {
       color: #9ddcff;
+      
+      &:hover {
+        color: #004690;
+      }
     }
   }
 }
