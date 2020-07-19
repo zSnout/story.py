@@ -53,13 +53,32 @@ class Page {
     return keyword;
   }
   
+  get related() {
+    var related = [];
+    var groups = this.groups;
+    
+    for (var i = 0;i < groups.length;i++) {
+      var relatedOn = this.relatedOn(groups[i].name.orig);
+      for (var j = 0;j < relatedOn.length;j++) {
+        var index = related.map(elem => elem.orig.url).indexOf(relatedOn[j].orig.url);
+        if (index == -1) {
+          related.push(relatedOn[j]);
+        } else {
+          related[index].on = relatedOn[j]._on[0];
+        }
+      }
+    }
+    
+    return related;
+  }
+  
   relatedOn(group) {
     var orig = this.url;
     
     if (this.groups.map(elem => elem._name).indexOf(group) == -1) {
       return [];
     } else {
-      return this.groups.find(elem => elem._name == group).pages.map(elem => new RelatedPage(orig,elem.url,group));
+      return this.groups.find(elem => elem._name == group).pages.filter(elem => elem.url != orig).map(elem => new RelatedPage(orig,elem.url,group));
     }
   }
 }
