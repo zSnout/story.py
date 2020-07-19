@@ -53,18 +53,13 @@ window.Page = class {
     return keyword;
   }
   
-  get related() {
-    var groups = this.groups;
+  relatedOn(group) {
+    var orig = this.url;
     
-    var related = [];
-    for (var i = 0;i < groups.length;i++) {
-      for (var j = 0;j < groups[i].pages.length;j++) {
-        if (related.indexOf(groups[i].pages[j]) == -1) {
-          related.push(new window.RelatedPage(this.url,groups[i].pages[j].url,groups[i].name.orig));
-        } else {
-          related[related.map(elem => elem.related.url).indexOf(groups[i].pages[j].url)].on = groups[i].name.orig;
-        }
-      }
+    if (this.groups.map(elem => elem._name).indexOf(group) == -1) {
+      return [];
+    } else {
+      return this.groups.find(elem => elem._name == group).pages.map(elem => new window.RelatedPage(orig,elem.url,group));
     }
   }
 }
