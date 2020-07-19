@@ -1,5 +1,5 @@
 ---
-group: Mental Math/Decimals
+group: Mental-Math/Decimals
 ---
 
 # Mentally Converting Decimals to Fractions
