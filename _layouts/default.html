@@ -90,8 +90,11 @@
     </script>
   </head>
   <body>
+    {%- assign files = site.html_pages -%}
     <div id="pages">
-      {{ site.html_pages | jsonify | xml_escape }}
+      {% for file in files %}
+        {{ file.dir }}
+      {% endforeach %}
     </div>
     
     <header>
