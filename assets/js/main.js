@@ -52,6 +52,50 @@ window.Page = class {
     
     return keyword;
   }
+  
+  get related() {
+    var groups = this.groups;
+    
+    var related = [];
+    for (var i = 0;i < groups.length;i++) {
+      for (var j = 0;j < groups[i].pages.length;j++) {
+        if (related.indexOf(groups[i].pages[j]) == -1) {
+          related.push(new window.RelatedPage(this.url,groups[i].pages[j].url,groups[i].name.orig));
+        } else {
+          related[related.map(elem => elem.related.url).indexOf(groups[i].pages[j].url)].on = groups[i].name.orig;
+        }
+      }
+    }
+  }
+}
+
+window.RelatedPage = class {
+  constructor(orig,related,on) {
+    this._orig = orig;
+    this._related = related;
+    this._on = [on];
+  }
+  
+  get on() {
+    var on = [];
+    for (var i = 0;i < this._on.length;i++) {
+      on.push(new window.Group(this._on[i]));
+    }
+  }
+  
+  set on(group) {
+    this._on.push(group);
+  }
+  
+  get orig() {
+    var url = this._orig;
+    return window.Page.pages.find(elem => elem.url == url);
+  }
+  
+  get related() {
+    var url = this._related;
+    return window.Page.pages.find(elem => elem.url == url);
+  }
 }
 
 window.Group = class {
