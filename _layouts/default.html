@@ -155,12 +155,17 @@
       if (me != -1) {
         me = pages[me];
         for (var i = 0;i < pages.length;i++) {
+          if (pages[i].url == me.url) {
+            continue;
+          }
+          
           for (var j = 0;j < me.group.length;j++) {
             if (pages[i].group.indexOf(me.group[j]) != -1) {
               if (!pages[i].related) {
                 related.push(pages[i]);
                 pages[i].related = true;
                 related[related.length - 1].on = [me.group[j]];
+                delete related[related.length - 1].related;
               } else {
                 related.find(elem => elem.url == pages[i].url).on.push(me.group[j]);
               }
