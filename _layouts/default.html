@@ -103,7 +103,7 @@
             "url": "{{ file.url }}",
             "title": "{{ file.title }}",
             "group": "{{ file.group | default: "" }}",
-            "keyword": "{{ file.keyword | default: "" | append: file.name }}",
+            "keyword": "{{ file.keyword | default: "" | append: " " | append: file.name | replace: '.md', '' }}"
           }
         {%- endif -%}
       {% endfor %}
