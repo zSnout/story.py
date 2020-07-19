@@ -90,7 +90,7 @@
     </script>
   </head>
   <body>
-    {%- assign allpages = site.html_files | where "dir", "/posts/" -%}
+    {% assign allpages = site.html_files | jsonify | xml_escape %}
     <div id="pages">
     </div>
     
