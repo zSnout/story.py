@@ -144,8 +144,8 @@
         pages[i].keyword = pages[i].keyword.toLowerCase().match(/[A-Za-z]{3,}/g);
         
         pages[i].group = pages[i].group.split(/ *, */g);
-        for (var i = 0;i < pages[i].group.length;i++) {
-          pages[i].group[i] = pages[i].group[i].replace(/-/g," ");
+        for (var j = 0;j < pages[i].group.length;j++) {
+          pages[i].group[j] = pages[i].group[j].replace(/-/g," ");
         }
       }
       
