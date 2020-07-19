@@ -1,5 +1,5 @@
 ---
-group: Paradoxes/Numbers | Paradoxes/Integers | Integers/Paradoxes
+group: Paradoxes/Numbers/Integers
 keyword: sum series
 ---
 
