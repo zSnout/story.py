@@ -91,7 +91,7 @@
   </head>
   <body>
     <div id="pages">
-      {{ site.pages | where "dir", "/posts/" | jsonify | xml_escape }}
+      {{ site.html_files | where "dir", "/posts/" | jsonify | xml_escape }}
     </div>
     
     <header>
