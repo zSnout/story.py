@@ -142,10 +142,14 @@
       
       var pages = JSON.parse(document.getElementById("pages").textContent);
       for (var i = 0;i < pages.length;i++) {
+        new Page(pages[i].url,pages[i].title,pages[i].group,pages[i].keyword);
+      }
+      
+      /* for (var i = 0;i < pages.length;i++) {
         pages[i].keyword = pages[i].keyword.toLowerCase().match(/[A-Za-z]{3,}/g);
         pages[i].related = false;
         
-        pages[i].group = pages[i].group.split(/ *, */g);
+        pages[i].group = pages[i].group.split(/ *, * {0}/g);
         for (var j = 0;j < pages[i].group.length;j++) {
           pages[i].group[j] = pages[i].group[j].replace(/-/g," ");
           
@@ -215,7 +219,7 @@
             }
           }
         }
-      }
+      } */
       
       var recent = getCookie("recent");
       try {
