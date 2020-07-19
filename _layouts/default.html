@@ -142,6 +142,7 @@
       var pages = JSON.parse(document.getElementById("pages").textContent);
       for (var i = 0;i < pages.length;i++) {
         pages[i].keyword = pages[i].keyword.toLowerCase().match(/[A-Za-z]{3,}/g);
+        pages[i].related = false;
         
         pages[i].group = pages[i].group.split(/ *, */g);
         for (var j = 0;j < pages[i].group.length;j++) {
@@ -155,9 +156,14 @@
         me = pages[me];
         for (var i = 0;i < pages.length;i++) {
           for (var j = 0;j < me.group.length;j++) {
-            if (pages[i].indexOf(me.group[i]) != -1) {
-              related.push(pages[i]);
-              break;
+            if (pages[i].group.indexOf(me.group[j]) != -1) {
+              if (!pages[i].related) {
+                related.push(pages[i]);
+                pages[i].related = true;
+                related[related.length - 1].on = [me.group[j]];
+              } else {
+                related.find(elem => elem.url == pages[i].url).on.push(me.group[j]);
+              }
             }
           }
         }
