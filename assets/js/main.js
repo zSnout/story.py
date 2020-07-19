@@ -129,7 +129,7 @@ window.Group = class {
     
     var myPages = [];
     for (var i = 0;i < pages.length;i++) {
-      if (pages[i].groups.map(elem => elem.name.orig).indexOf(this._name) != -1) {
+      if (pages[i]._groups.split(/ *, * ?/).indexOf(this._name) != -1) {
         myPages.push(pages[i]);
       }
     }
