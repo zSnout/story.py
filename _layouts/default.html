@@ -92,11 +92,12 @@
   <body>
     {% assign pages = site.pages | where "dir", "/posts/" %}
     <div id="pages">{
-    {% for item in pages %}
-      "url": "{{ item.url | replace '\\', '\\' | replace '"', '\"' }}",
-      "title": "{{ item.title | replace '\\', '\\' | replace '"', '\"' }}",
-      "group": {{ item.group | default: "" | split: " | " | jsonify }},
-      "keyword": {{ item.keyword | default: "" | append: item.name | replace: ".md", "" | replace: ".html", "" | split: " | " | jsonify }}"{% endfor %}
+      {% for item in pages %}
+        "url": "{{ item.url | replace '\\', '\\' | replace '"', '\"' }}",
+        "title": "{{ item.title | replace '\\', '\\' | replace '"', '\"' }}",
+        "group": {{ item.group | default: "" | split: " \| " | jsonify }},
+        "keyword": {{ item.keyword | default: "" | append: item.name | replace: ".md", "" | replace: ".html", "" | split: " \| " | jsonify }}"
+      {% endfor %}
     }</div>
     
     <header>
