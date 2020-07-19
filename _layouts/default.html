@@ -149,11 +149,18 @@
         }
       }
       
-      var me = pages.find(elem => elem.url == window.location.pathname);
-      if (!me) {
-        var related = [];
-      } else {
-        var related = pages.filter(elem => elem.group.filter(el => me.group.includes(el)).length != 0);
+      var me = pages.map(elem => elem.url).indexOf(window.location.pathname);
+      var related = [];
+      if (me != -1) {
+        me = pages[me];
+        for (var i = 0;i < pages.length;i++) {
+          for (var j = 0;j < me.group.length;j++) {
+            if (pages[i].indexOf(me.group[i]) != -1) {
+              related.push(pages[i]);`
+              break;
+            }
+          }
+        }
       }
       
       var recent = getCookie("recent");
