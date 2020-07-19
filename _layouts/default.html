@@ -153,7 +153,7 @@
       if (!me) {
         var related = [];
       } else {
-        var related = pages.filter(elem => elem.group.filter(el => me.group.includes(el)));
+        var related = pages.filter(elem => elem.group.filter(el => me.group.includes(el)).length != 0);
       }
       
       var recent = getCookie("recent");
