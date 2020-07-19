@@ -95,10 +95,10 @@
     <div id="pages" style="display: none">[
       {%- for file in files -%}
         {%- if file.dir == "/posts/" -%}
-          {%- if first == 1 -%}
-            {%- assign first = 0 -%}
+          {%- if first != 1 -%}
             ,
           {%- endif -%}
+          {%- assign first = 0 -%}
           {
             "url": "{{ file.url }}",
             "title": "{{ file.title }}",
