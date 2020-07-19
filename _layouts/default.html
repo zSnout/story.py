@@ -91,7 +91,7 @@
   </head>
   <body>
     <div id="pages">
-      {{ site.html_pages | jsonify }}
+      {{ site.html_pages | jsonify | xml_escape }}
     </div>
     
     <header>
