@@ -20,6 +20,10 @@ class Page {
     return unique;
   }
   
+  static get group() {
+    var pages = Page.pages;
+  }
+  
   constructor(url,title,group,keyword) {
     if (!Page._pages) {
       Page._pages = [this];
