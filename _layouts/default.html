@@ -91,14 +91,16 @@
   </head>
   <body>
     {%- assign files = site.html_pages -%}
-    <div id="pages">{{ "{" }}
+    <div id="pages">
       {% for file in files %}
-        "url": "{{ file.url | uri_escape | xml_escape }}",
-        "title": "{{ file.title | xml_escape }}",
-        "group": "{{ file.group | default: "" | xml_escape }}",
-        "keyword": "{{ file.keyword | default: "" | append: file.name | remove: ".md" | xml_escape }}",
+        {
+          "url": "{{ file.url }}",
+          "title": "{{ file.title }}",
+          "group": "{{ file.group | default: "" }}",
+          "keyword": "{{ file.keyword | default: "" }}",
+        }
       {% endfor %}
-    {{ "}" }}</div>
+    </div>
     
     <header>
       <div class="inner">
