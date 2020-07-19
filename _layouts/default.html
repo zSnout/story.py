@@ -90,15 +90,17 @@
     </script>
   </head>
   <body>
-    {%- assign files = site.html_pages | where "dir", "posts" -%}
+    {%- assign files = site.html_pages -%}
     <div id="pages" style="display: none">
       {%- for file in files -%}
+      {%- if file.dir == "/posts/" -%}
         {
           "url": "{{ file.url }}",
           "title": "{{ file.title }}",
           "group": "{{ file.group | default: "" }}",
           "keyword": "{{ file.keyword | default: "" | append: file.name }}",
         },
+      {%- endif -%}
       {%- endfor -%}
     </div>
     
