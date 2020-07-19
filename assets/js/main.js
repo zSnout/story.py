@@ -1,17 +1,32 @@
-class Page {
+window.Page = class {
   static get pages() {
+    var urls = [];
     var pages = [];
-    
-    for (var member in window) {
-      if (window[member] instanceof Page) {
-        pages.push(window[member]);
-      }
+    for (var i = 0;i < window.Page._pages.length;i++) {
+      urls.push(window.Page._pages[i].url);
+      pages.push(window.Page._pages[i]);
     }
     
-    return pages;
+    var unique = [];
+    for (var i = 0;i < urls.length;i++) {
+      if (unique.indexOf(urls[i]) == -1) {
+        unique.push(urls[i]);
+      }
+    }
+    for (var i = 0;i < unique.length;i++) {
+      unique[i] = pages.find(elem => elem.url == unique[i]);
+    }
+    
+    return unique;
   }
   
   constructor(url,title,group,keyword) {
+    if (!window.Page._pages) {
+      window.Page._pages = [this];
+    } else {
+      window.Page._pages.push(this);
+    }
+    
     this.url = url;
     this.title = title;
     this._groups = group;
@@ -22,7 +37,7 @@ class Page {
     var group = this._groups.split(/ *, */g);
     
     for (var j = 0;j < group.length;j++) {
-      group[j] = new Group(group[j]);
+      group[j] = new window.Group(group[j]);
     }
     
     return group;
@@ -32,14 +47,14 @@ class Page {
     var keyword = this._keywords.split(/ +/g);
     
     for (var j = 0;j < keyword.length;j++) {
-      keyword[j] = new Keyword(keyword[j]);
+      keyword[j] = new window.Keyword(keyword[j]);
     }
     
     return keyword;
   }
 }
 
-class Group {
+window.Group = class {
   constructor(name) {
     this._name = name.replace(/-/g," ");
   }
@@ -66,7 +81,7 @@ class Group {
   }
   
   get pages() {
-    var pages = Page.pages;
+    var pages = window.Page.pages;
     
     var myPages = [];
     for (var i = 0;i < pages.length;i++) {
@@ -79,7 +94,7 @@ class Group {
   }
 }
 
-class Keyword {
+window.Keyword = class {
   constructor(keyword) {
     this._keyword = keyword;
   }
@@ -89,7 +104,7 @@ class Keyword {
   }
   
   get pages() {
-    var pages = Page.pages;
+    var pages = window.Page.pages;
     
     var myPages = [];
     for (var i = 0;i < pages.length;i++) {
