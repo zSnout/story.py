@@ -149,7 +149,7 @@
         }
       }
       
-      var me = pages.find(elem => pages[i].url == window.location.pathname);
+      var me = pages.find(elem => elem.url == window.location.pathname);
       if (!me) {
         var related = [];
       } else {
