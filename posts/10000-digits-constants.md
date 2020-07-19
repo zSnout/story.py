@@ -1,5 +1,5 @@
 ---
-group: Digits/10000 Digits | Constants
+group: Digits/10000 Digits, Constants
 keyword: pi e euler phi golden ratio gamma
 ---
 
