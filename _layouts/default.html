@@ -92,12 +92,15 @@
   <body>
     {% assign pages = site.pages | where "dir", "/posts/" %}
     <div id="pages">
-      {% for item in pages %}
-        {{ item.url | xml_escape }}
-        {{ item.title | xml_escape }}
-        {{ item.group | default: "" | xml_escape }}
-        {{ item.keyword | default: "" | append: item.name | remove: ".md" | xml_escape }}
-      {% endfor %}
+      {{ pages | jsonify | xml_escape }}
+      {% comment %}
+        {% for item in pages %}
+          {{ item.url | xml_escape }}
+          {{ item.title | xml_escape }}
+          {{ item.group | default: "" | xml_escape }}
+          {{ item.keyword | default: "" | append: item.name | remove: ".md" | xml_escape }}
+        {% endfor %}
+      {% endcomment %}
     </div>
     
     <header>
