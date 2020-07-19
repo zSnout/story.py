@@ -130,7 +130,7 @@
           <p style="font-weight: bold" id="recently-visited">Recently Visited</p>
           <p style="font-weight: bold" id="profile">My Account</p>
           <p style="font-weight: bold" id="sidebar-contents">Contents</p>
-          <!-- p style="font-weight: bold" id="related">Related</p -->
+          <p style="font-weight: bold" id="related">Related</p>
         </aside>
       </div>
     </div>
@@ -147,6 +147,13 @@
         for (var i = 0;i < pages[i].group.length;i++) {
           pages[i].group[i] = pages[i].group[i].replace(/-/g," ");
         }
+      }
+      
+      var me = pages.find(elem => pages[i].url == window.location.pathname);
+      if (!me) {
+        var related = [];
+      } else {
+        var related = pages.filter(elem => elem.group.filter(el => me.group.includes(el)));
       }
       
       var recent = getCookie("recent");
