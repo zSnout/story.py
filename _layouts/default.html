@@ -93,10 +93,10 @@
     {% assign pages = site.pages | where "dir", "/posts/" %}
     <div id="pages">{
       {% for item in pages %}
-        "url": "{{ item.url | replace '\\', '\\' | replace '"', '\"' }}",
-        "title": "{{ item.title | replace '\\', '\\' | replace '"', '\"' }}",
-        "group": {{ item.group | default: "" | split: " \| " | jsonify }},
-        "keyword": {{ item.keyword | default: "" | append: item.name | replace: ".md", "" | replace: ".html", "" | split: " \| " | jsonify }}"
+        "url": "{{ item.url | xml_escape }}",
+        "title": "{{ item.title | xml_escape }}",
+        "group": {{ item.group | default: "" | split: " " | jsonify | xml_escape }},
+        "keyword": {{ item.keyword | default: "" | append: item.name | remove: ".md" | split: " " | jsonify | xml_escape }}"
       {% endfor %}
     }</div>
     
