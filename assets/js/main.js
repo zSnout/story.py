@@ -1,10 +1,10 @@
-window.Page = class {
+class Page {
   static get pages() {
     var urls = [];
     var pages = [];
-    for (var i = 0;i < window.Page._pages.length;i++) {
-      urls.push(window.Page._pages[i].url);
-      pages.push(window.Page._pages[i]);
+    for (var i = 0;i < Page._pages.length;i++) {
+      urls.push(Page._pages[i].url);
+      pages.push(Page._pages[i]);
     }
     
     var unique = [];
@@ -21,10 +21,10 @@ window.Page = class {
   }
   
   constructor(url,title,group,keyword) {
-    if (!window.Page._pages) {
-      window.Page._pages = [this];
+    if (!Page._pages) {
+      Page._pages = [this];
     } else {
-      window.Page._pages.push(this);
+      Page._pages.push(this);
     }
     
     this.url = url;
@@ -37,7 +37,7 @@ window.Page = class {
     var group = this._groups.split(/ *, * ?/g);
     
     for (var j = 0;j < group.length;j++) {
-      group[j] = new window.Group(group[j]);
+      group[j] = new Group(group[j]);
     }
     
     return group;
@@ -47,7 +47,7 @@ window.Page = class {
     var keyword = this._keywords.split(/ +/g);
     
     for (var j = 0;j < keyword.length;j++) {
-      keyword[j] = new window.Keyword(keyword[j]);
+      keyword[j] = new Keyword(keyword[j]);
     }
     
     return keyword;
@@ -59,12 +59,12 @@ window.Page = class {
     if (this.groups.map(elem => elem._name).indexOf(group) == -1) {
       return [];
     } else {
-      return this.groups.find(elem => elem._name == group).pages.map(elem => new window.RelatedPage(orig,elem.url,group));
+      return this.groups.find(elem => elem._name == group).pages.map(elem => new RelatedPage(orig,elem.url,group));
     }
   }
 }
 
-window.RelatedPage = class {
+class RelatedPage {
   constructor(orig,related,on) {
     this._orig = orig;
     this._related = related;
@@ -74,7 +74,7 @@ window.RelatedPage = class {
   get on() {
     var on = [];
     for (var i = 0;i < this._on.length;i++) {
-      on.push(new window.Group(this._on[i]));
+      on.push(new Group(this._on[i]));
     }
   }
   
@@ -84,16 +84,16 @@ window.RelatedPage = class {
   
   get orig() {
     var url = this._orig;
-    return window.Page.pages.find(elem => elem.url == url);
+    return Page.pages.find(elem => elem.url == url);
   }
   
   get related() {
     var url = this._related;
-    return window.Page.pages.find(elem => elem.url == url);
+    return Page.pages.find(elem => elem.url == url);
   }
 }
 
-window.Group = class {
+class Group {
   constructor(name) {
     this._name = name.replace(/-/g," ");
   }
@@ -120,11 +120,11 @@ window.Group = class {
   }
   
   get pages() {
-    return window.Page.pages.filter(elem => elem.groups.map(el => el._name).indexOf(this._name) != -1);
+    return Page.pages.filter(elem => elem.groups.map(el => el._name).indexOf(this._name) != -1);
   }
 }
 
-window.Keyword = class {
+class Keyword {
   constructor(keyword) {
     this._keyword = keyword;
   }
@@ -134,6 +134,6 @@ window.Keyword = class {
   }
   
   get pages() {
-    return window.Page.pages.filter(elem => elem.keywords.map(el => el._keyword).indexOf(this._keyword) != -1);
+    return Page.pages.filter(elem => elem.keywords.map(el => el._keyword).indexOf(this._keyword) != -1);
   }
 }
