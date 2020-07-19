@@ -90,8 +90,8 @@
     </script>
   </head>
   <body>
-    {% assign allpages = site.html_files | jsonify | xml_escape %}
     <div id="pages">
+      {{ site.html_files | jsonify | xml_escape }}
     </div>
     
     <header>
