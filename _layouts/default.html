@@ -147,11 +147,47 @@
         pages[i].group = pages[i].group.split(/ *, */g);
         for (var j = 0;j < pages[i].group.length;j++) {
           pages[i].group[j] = pages[i].group[j].replace(/-/g," ");
+          
+          var match = pages[i].group[j].match(/(.+) *\/ *(.+) *\/ *(.+)/);
+          if (match) {
+            pages[i].group[j] = {
+              type: "subsub",
+              root: match[1],
+              sub: match[2],
+              subsub: match[3]
+            };
+          } else {
+            var match = pages[i].group[j].match(/(.+) *\/ *(.+)/);
+            if (match) {
+              pages[i].group[j] = {
+                type: "sub",
+                root: match[1],
+                sub: match[2]
+              };
+            } else {
+              pages[i].group[j] = {
+                type: "root",
+                root: pages[i].group[j]
+              }
+            }
+          }
         }
       }
       
       var me = pages.map(elem => elem.url).indexOf(window.location.pathname);
       var related = [];
+      
+      function addRelated(i,on) {
+        if (!pages[i].related) {
+          related.push(pages[i]);
+          pages[i].related = true;
+          related[related.length - 1].on = [on];
+          delete related[related.length - 1].related;
+        } else {
+          related.find(elem => elem.url == pages[i].url).on.push(on);
+        }
+      }
+      
       if (me != -1) {
         me = pages[me];
         for (var i = 0;i < pages.length;i++) {
@@ -161,13 +197,19 @@
           
           for (var j = 0;j < me.group.length;j++) {
             if (pages[i].group.indexOf(me.group[j]) != -1) {
-              if (!pages[i].related) {
-                related.push(pages[i]);
-                pages[i].related = true;
-                related[related.length - 1].on = [me.group[j]];
-                delete related[related.length - 1].related;
+              addRelated(i,me.group[j]);
+            } else if (pages[i].group.map(elem => elem.root).indexOf(me.group[j].root) != -1) {
+              if (me.group[j].sub !== undefined && pages[i].group.map(elem => elem.sub).indexOf(me.group[j].sub) != -1) {
+                addRelated(i,{
+                  type: "sub",
+                  root: me.group[j].root,
+                  sub: me.group[j].sub
+                });
               } else {
-                related.find(elem => elem.url == pages[i].url).on.push(me.group[j]);
+                addRelated(i,{
+                  type: "root",
+                  root: me.group[j].root
+                });
               }
             }
           }
