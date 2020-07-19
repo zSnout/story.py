@@ -98,7 +98,7 @@
           {%- if first != 1 -%}
             ,
           {%- endif -%}
-          {%- assign first = 0 -%}
+          {% assign first = 0 %}
           {
             "url": "{{ file.url }}",
             "title": "{{ file.title }}",
@@ -106,7 +106,7 @@
             "keyword": "{{ file.keyword | default: "" | append: file.name }}",
           }
         {%- endif -%}
-      {%- endfor -%}
+      {% endfor %}
     ]</div>
     
     <header>
