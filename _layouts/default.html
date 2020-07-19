@@ -90,17 +90,8 @@
     </script>
   </head>
   <body>
-    {% assign pages = site.pages | where "dir", "/posts/" %}
     <div id="pages">
-      {{ pages | jsonify | xml_escape }}
-      {% comment %}
-        {% for item in pages %}
-          {{ item.url | xml_escape }}
-          {{ item.title | xml_escape }}
-          {{ item.group | default: "" | xml_escape }}
-          {{ item.keyword | default: "" | append: item.name | remove: ".md" | xml_escape }}
-        {% endfor %}
-      {% endcomment %}
+      {{ site.pages | where "dir", "/posts/" | jsonify | xml_escape }}
     </div>
     
     <header>
@@ -125,9 +116,7 @@
           <p style="font-weight: bold" id="profile">My Account</p>
           <p style="font-weight: bold" id="sidebar-contents">Contents</p>
           <p style="font-weight: bold" id="related">Related</p>
-          {% assign related = site.html_pages | where: "dir", page.dir | where_exp: "item", "item.url != page.url" %}
-          <p><a href="https://github.com/zSnout/zmath/blob/master{{ page.url | replace: ".html", ".md" }}">This Page's Source</a></p>{% for item in related %}
-          <p><a href="{{ item.url | remove: ".html" | xml_escape }}">{{ item.title | xml_escape }}</a></p>{% endfor %}
+          <p><a href="https://github.com/zSnout/zmath/blob/master{{ page.url | replace: ".html", ".md" }}">This Page's Source</a></p>
         </aside>
       </div>
     </div>
