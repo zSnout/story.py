@@ -34,7 +34,7 @@ window.Page = class {
   }
   
   get groups() {
-    var group = this._groups.split(/ *, */g);
+    var group = this._groups.split(/ *, * ?/g);
     
     for (var j = 0;j < group.length;j++) {
       group[j] = new window.Group(group[j]);
@@ -104,9 +104,9 @@ window.Group = class {
   }
   
   get type() {
-    if (this.name.match(/.+\/.+\/.+/)) {
+    if (this._name.match(/.+\/.+\/.+/)) {
       return "subsub";
-    } else if (this.name.match(/.+\/.+/)) {
+    } else if (this._name.match(/.+\/.+/)) {
       return "sub";
     } else {
       return "root";
@@ -125,16 +125,7 @@ window.Group = class {
   }
   
   get pages() {
-    var pages = window.Page.pages;
-    
-    var myPages = [];
-    for (var i = 0;i < pages.length;i++) {
-      if (pages[i]._groups.split(/ *, * ?/).indexOf(this._name) != -1) {
-        myPages.push(pages[i]);
-      }
-    }
-    
-    return pages;
+    return window.Page.pages.filter(elem => elem.groups.map(el => el._name).indexOf(this._name) != -1);
   }
 }
 
@@ -148,15 +139,6 @@ window.Keyword = class {
   }
   
   get pages() {
-    var pages = window.Page.pages;
-    
-    var myPages = [];
-    for (var i = 0;i < pages.length;i++) {
-      if (pages[i].keywords.map(elem => elem.keyword).indexOf(this._keyword) != -1) {
-        myPages.push(pages[i]);
-      }
-    }
-    
-    return pages;
+    return window.Page.pages.filter(elem => elem.keywords.map(el => el._keyword).indexOf(this._keyword) != -1);
   }
 }
