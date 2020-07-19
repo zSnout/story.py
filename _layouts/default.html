@@ -139,6 +139,12 @@
       var title = document.getElementsByTagName("title")[0].textContent;
       document.getElementById("title").textContent = title;
       
+      var pages = JSON.parse(document.getElementById("pages").textContent);
+      for (var i = 0;i < pages.length;i++) {
+        pages[i].keyword = pages[i].keyword.match(/[A-Za-z]{3,}/g);
+        pages[i].group = pages[i].group.split(/ *\| */g);
+      }
+      
       var recent = getCookie("recent");
       try {
         recent = JSON.parse(recent);
