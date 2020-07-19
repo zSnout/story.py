@@ -91,7 +91,7 @@
   </head>
   <body>
     <div id="pages">
-      {{ site.html_files | where "dir", "/posts/" | jsonify | xml_escape }}
+      
     </div>
     
     <header>
@@ -115,8 +115,7 @@
           <p style="font-weight: bold" id="recently-visited">Recently Visited</p>
           <p style="font-weight: bold" id="profile">My Account</p>
           <p style="font-weight: bold" id="sidebar-contents">Contents</p>
-          <p style="font-weight: bold" id="related">Related</p>
-          <p><a href="https://github.com/zSnout/zmath/blob/master{{ page.url | replace: ".html", ".md" }}">This Page's Source</a></p>
+          <!-- p style="font-weight: bold" id="related">Related</p -->
         </aside>
       </div>
     </div>
