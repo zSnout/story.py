@@ -210,6 +210,20 @@ class Tree {
     
     return all;
   }
+  
+  get html() {
+    if (this.pages.length == 0) {
+      var pages = [];
+    } else {
+      var pages = `<ul>${this.pages.map(elem => `<li><a href="${elem.url.replace(/"/g,"&quot;")}">${elem.title.replace(/</g,"&lt;")}</a></li>`).join("")}</ul>`;
+    }
+    
+    for (var i in this.sub) {
+      pages += `<h2>${i}</h2>${this.sub[i].html.replace(/h2/g,"h3")}`;
+    }
+    
+    return pages;
+  }
 }
 
 class Keyword {
