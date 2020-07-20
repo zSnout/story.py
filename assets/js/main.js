@@ -33,26 +33,32 @@ class Page {
         var match = groups[j].match(regex);
         
         if (Object.keys(tree).indexOf(match[1]) == -1) {
-          tree[match[1]] = {pages: [],sub: {}};
+          tree[match[1]] = {pages: [],all: [],sub: {}};
         }
         if (!!match[2] && Object.keys(tree[match[1]].sub).indexOf(match[2]) == -1) {
-          tree[match[1]].sub[match[2]] = {pages: [],sub: {}};
+          tree[match[1]].sub[match[2]] = {pages: [],all: [],sub: {}};
         }
         if (!!match[3] && Object.keys(tree[match[1]].sub[match[2]].sub).indexOf(match[3]) == -1) {
-          tree[match[1]].sub[match[2]].sub[match[3]] = {pages: []};
+          tree[match[1]].sub[match[2]].sub[match[3]] = {pages: [],all: [],sub: {}};
         }
         
         if (match[3]) {
           if (tree[match[1]].sub[match[2]].sub[match[3]].pages.map(elem => elem.url).indexOf(page.url) == -1) {
             tree[match[1]].sub[match[2]].sub[match[3]].pages.push(page);
+            tree[match[1]].sub[match[2]].sub[match[3]].all.push(page);
+            tree[match[1]].sub[match[2]].all.push(page);
+            tree[match[1]].all.push(page);
           }
         } else if (match[2]) {
           if (tree[match[1]].sub[match[2]].pages.map(elem => elem.url).indexOf(page.url) == -1) {
             tree[match[1]].sub[match[2]].pages.push(page);
+            tree[match[1]].sub[match[2]].all.push(page);
+            tree[match[1]].all.push(page);
           }
         } else {
           if (tree[match[1]].pages.map(elem => elem.url).indexOf(page.url) == -1) {
             tree[match[1]].pages.push(page);
+            tree[match[1]].all.push(page);
           }
         }
       }
