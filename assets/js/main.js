@@ -215,23 +215,45 @@ class Group {
   }
   
   get tree() {
-    var orig = this._name;
-    
-    var pages = this.pages;
-    var sub = Group.groups.filter(elem => elem._name.length > orig.length && elem._name.substr(0,orig.length + 1) == orig + "/");
-    var obj = {pages: [],all: [],sub: {}};
-    
-    for (var i = 0;i < pages.length;i++) {
-      obj.pages.push(pages[i]);
-      obj.all.push(pages[i]);
-    }
+    return new Tree(this._name);
+  }
+}
+
+class Tree {
+  constructor(name) {
+    this._name = name;
+  }
+  
+  get group() {
+    return new Group(this._name);
+  }
+  
+  get name() {
+    return this.group.name;
+  }
+  
+  get pages() {
+    return this.group.pages;
+  }
+  
+  get sub() {
+    var groups = Group.groups.filter(elem => elem._name.length > orig.length && elem._name.substr(0,orig.length + 1) == orig + "/").map(elem => elem._name);
+    var sub = {};
     
     for (var i = 0;i < sub.length;i++) {
-      obj.sub[sub[i]] = (new Group(sub[i])).tree;
-      obj.all = obj.all.concat(obj.sub[sub[i]].all);
+      sub[groups[i]] = new Tree(groups[i]);
     }
     
-    return obj;
+    return sub;
+  }
+  
+  get all() {
+    var all = this.pages;
+    for (var i = 0;i < this.sub;i++) {
+      all = all.concat(this.sub[i].pages);
+    }
+    
+    return all;
   }
 }
 
