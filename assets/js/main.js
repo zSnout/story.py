@@ -1,5 +1,9 @@
 class Page {
   static get pages() {
+    if (!Page._pages) {
+      return [];
+    }
+    
     var urls = [];
     var pages = [];
     for (var i = 0;i < Page._pages.length;i++) {
@@ -162,8 +166,10 @@ class RelatedPage {
 class Group {
   static get groups() {
     var list = [];
-    for (var i = 0;i < Page.pages.length;i++) {
-      var groups = Page.pages[i].groups.map(elem => elem._name);
+    var pages = Page.pages;
+    
+    for (var i = 0;i < pages.length;i++) {
+      var groups = pages[i].groups.map(elem => elem._name);
       for (var j = 0;j < groups.length;j++) {
         if (list.indexOf(groups[j]) == -1) {
           list.push(groups[j]);
