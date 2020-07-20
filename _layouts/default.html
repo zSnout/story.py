@@ -145,7 +145,7 @@
         new Page(pages[i].url,pages[i].title,pages[i].group,pages[i].keyword);
       }
       
-      var tree = Page.tree;
+      /* var tree = Page.tree;
       if (window.location.pathname == "/") {
         var match = window.location.search.match(/^\?group=([^&]+)$/);
         if (match && Object.keys(tree).indexOf(match[1]) != -1) {
@@ -164,34 +164,7 @@
           };
           var title = "zMath";
         }
-        
-        document.getElementById("sitemap").innerHTML = title;
-        
-        if (group.pages.length != 0) {
-          document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${group.pages.map(elem => `<li><a href="${elem.url}">${elem.title}</a></li>`).join("")}</ul>`);
-        }
-        
-        if (Object.keys(group.sub).length != 0) {
-          for (var i = 0;i < Object.keys(group.sub).length;i++) {
-            var iKey = Object.keys(group.sub)[i];
-            var sub = group.sub[iKey].sub;
-            document.getElementById("comments").insertAdjacentHTML("beforebegin",`<h2 id="heading-${i}">${iKey}</h2>`);
-            
-            if (group.sub[iKey].pages.length != 0) {
-              document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${group.sub[iKey].pages.map(elem => `<li><a href="${elem.url}">${elem.title}</a></li>`).join("")}</ul>`);
-            }
-            
-            if (Object.keys(sub).length != 0) {
-              for (var j = 0;j < Object.keys(sub).length;j++) {
-                var jKey = Object.keys(sub)[j];
-                
-                document.getElementById("comments").insertAdjacentHTML("beforebegin",`<h3 id="heading-${i}-${j}">${jKey}</h3>`);
-                document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${group.sub[iKey].sub[jKey].pages.map(elem => `<li><a href="${elem.url}">${elem.title}</a></li>`).join("")}</ul>`);
-              }
-            }
-          }
-        }
-      }
+      } */
     </script>
     
     <script>
