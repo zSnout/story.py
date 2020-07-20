@@ -165,15 +165,15 @@
           var title = "All Sections";
         }
         
-        document.getElementById("comments").insertAdjacentHTML("beforestart",`<h2 id="title">${title}</h2>`);
+        document.getElementById("comments").insertAdjacentHTML("beforebegin",`<h2 id="title">${title}</h2>`);
         
         if (group.pages.length != 0) {
-          document.getElementById("comments").insertAdjacentHTML("beforestart",`<ul>${group.pages.map(elem => `<li><a href="${elem.url}">${elem.title}</a></li>`).join("")}</ul>`);
+          document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${group.pages.map(elem => `<li><a href="${elem.url}">${elem.title}</a></li>`).join("")}</ul>`);
         }
         
         if (group.sub.length != 0) {
           for (var i = 0;i < Object.keys(group.sub).length;i++) {
-            document.getElementById("comments").insertAdjacentHTML("beforestart",`<h2 id="heading-${i}">${i}</h2><ul>${group.sub[Object.keys(group.sub)[i]].pages.map(elem => `<li><a href="${elem.url}">${elem.title}</a></li>`).join("")}</ul>`);
+            document.getElementById("comments").insertAdjacentHTML("beforebegin",`<h2 id="heading-${i}">${i}</h2><ul>${group.sub[Object.keys(group.sub)[i]].pages.map(elem => `<li><a href="${elem.url}">${elem.title}</a></li>`).join("")}</ul>`);
           }
         }
       }
