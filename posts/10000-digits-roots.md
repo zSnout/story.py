@@ -1,5 +1,5 @@
 ---
-group: Digits/10000-Digits, Roots/Square-Roots
+group: Math/Decimals, Math/Roots-and-Radicals
 ---
 
 # 10,000 Digits of Square Roots
