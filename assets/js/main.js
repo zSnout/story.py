@@ -229,7 +229,7 @@ class Group {
       obj.all = obj.all.concat(obj.sub[sub[i]].all);
     }
     
-    return tree;
+    return obj;
   }
 }
 
