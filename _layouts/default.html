@@ -153,7 +153,7 @@
           document.getElementById("comments").insertAdjacentHTML("beforebegin",(new Tree(group)).html);
         } else {
           document.getElementById("sitemap").innerHTML = "Home | <a href='#'>zMath</a>";
-          document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${Group.groups.filter(elem => elem.type == "root").map(elem => `<li><a href='${"#" + elem._name}'>${elem._name}</a></li>`)}</ul>`);
+          document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${Group.groups.filter(elem => elem.type == "root").map(elem => `<li><a href='${"#" + elem._name}'>${elem._name}</a></li>`).join("")}</ul>`);
         }
       }
     </script>
