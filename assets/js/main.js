@@ -242,7 +242,7 @@ class Tree {
     var groups = Group.groups.filter(elem => elem._name.length > orig.length && elem._name.substr(0,orig.length + 1) == orig + "/").map(elem => elem._name);
     var sub = {};
     
-    for (var i = 0;i < sub.length;i++) {
+    for (var i = 0;i < groups.length;i++) {
       sub[groups[i]] = new Tree(groups[i]);
     }
     
