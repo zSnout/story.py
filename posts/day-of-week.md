@@ -1,5 +1,5 @@
 ---
-group: Calculate/Date
+group: Math/Calculate
 keyword: week
 ---
 
