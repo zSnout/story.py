@@ -23,11 +23,11 @@ class Page {
   static get tree() {
     var pages = Page.pages;
     var tree = {};
-    var regex = /^(.+?)(?: *\/ *(.+?)(?: *\/ *(.+?))?)?$/;
+    var regex = /^([^\/]+)(?:\/([^\/]+)(?:\/([^\/]+?))?)?$/;
     
     for (var i = 0;i < pages.length;i++) {
       var page = pages[i];
-      var groups = page.groups;
+      var groups = page._groups.split(/ ?\/ ?/g);
       
       for (var j = 0;j < groups.length;j++) {
         var match = groups[j]._name.match(regex);
@@ -75,7 +75,7 @@ class Page {
   }
   
   get groups() {
-    var group = this._groups.split(/ *, * ?/g);
+    var group = this._groups.split(/ ?, ?/g);
     
     for (var j = 0;j < group.length;j++) {
       group[j] = new Group(group[j]);
@@ -169,7 +169,7 @@ class Group {
   }
   
   get name() {
-    var match = this._name.match(/^(.+?)(?: *\/ *(.+?)(?: *\/ *(.+?))?)?$/);
+    var match = this._name.match(/^(.+?)(?:\/(.+?)(?:\/(.+?))?)?$/);
     
     return {
       orig: match[0],
