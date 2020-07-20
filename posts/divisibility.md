@@ -1,5 +1,5 @@
 ---
-group: Integers/Division
+group: Math/Integers
 ---
 
 # Divisibility Rules
