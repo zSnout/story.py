@@ -212,14 +212,23 @@ class Tree {
   }
   
   get html() {
+    function escape(text) {
+      return text
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&apos;")
+    }
+    
     if (this.pages.length == 0) {
       var pages = [];
     } else {
-      var pages = `<ul>${this.pages.map(elem => `<li><a href='${elem.url.replace(/'/g,"&apos;")}'>${elem.title.replace(/</g,"&lt;").replace(/'/g,"&apos;")}</a></li>`).join("")}</ul>`;
+      var pages = `<ul>${this.pages.map(elem => `<li><a href='${escape(elem.url)}>${escape(elem.title)}</a></li>`).join("")}</ul>`;
     }
     
     for (var i in this.sub) {
-      pages += `<h2>${i}</h2>${this.sub[i].html.replace(/h5/g,"h6").replace(/h4/g,"h5").replace(/h3/g,"h4").replace(/h2/g,"h3")}`;
+      pages += `<h2>${escape(i).replace(/^.+\/([^\/]+)/,"$1")}</h2>${this.sub[i].html.replace(/h5/g,"h6").replace(/h4/g,"h5").replace(/h3/g,"h4").replace(/h2/g,"h3")}`;
     }
     
     return pages;
