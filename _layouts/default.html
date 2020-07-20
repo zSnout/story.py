@@ -155,7 +155,11 @@
         if (group) {
           var tree = new Tree(group[1]);
           document.getElementById("sitemap").innerHTML = `${group[1]} | <a href='/'>zMath</a>`;
-          document.getElementById("comments").insertAdjacentHTML("beforebegin",tree.html);
+          var i = 0;
+          document.getElementById("comments").insertAdjacentHTML("beforebegin",tree.html.replace(/<h([2-6])>/,function(m) {
+            i++;
+            return `<${"h" + m[1]} id="header-${i}">`;
+          }));
         } else {
           document.getElementById("sitemap").innerHTML = `Home | <a href='/'>zMath</a>`;
           document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${Group.groups.map(elem => elem.name.root).filter(unique).map(elem => `<li><a href='/?group=${elem.replace(/ /g,"-")}'>${elem}</a></li>`).join("")}</ul>`);
