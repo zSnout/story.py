@@ -180,16 +180,16 @@
               document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${group.sub[iKey].pages.map(elem => `<li><a href="${elem.url}">${elem.title}</a></li>`).join("")}</ul>`);
             }
             
-            if (group.sub.length != 0) {
+            if (group.sub[iKey].sub.length != 0) {
               for (var j = 0;j < Object.keys(group.sub[iKey].sub).length;j++) {
-                var jKey = Object.keys(group.sub)[j];
+                var jKey = Object.keys(group.sub[iKey].sub)[j];
                 document.getElementById("comments").insertAdjacentHTML("beforebegin",`<h2 id="heading-${i}-${j}">${jKey}</h2>`);
                 
                 if (group.sub[jKey].pages.length != 0) {
                   document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${group.sub[iKey].sub[jKey].pages.map(elem => `<li><a href="${elem.url}">${elem.title}</a></li>`).join("")}</ul>`);
                 }
                 
-                if (group.sub[jKey].sub.length != 0) {
+                if (group.sub[iKey].sub[jKey].sub.length != 0) {
                   for (var k = 0;k < Object.keys(group.sub[iKey].sub[jKey].sub).length;k++) {
                     var kKey = Object.keys(group.sub[iKey].sub[jKey].sub)[k];
                     document.getElementById("comments").insertAdjacentHTML("beforebegin",`<h2 id="heading-${i}-${j}-${k}">${kKey}</h2>`);
