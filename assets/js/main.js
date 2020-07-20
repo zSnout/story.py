@@ -20,8 +20,45 @@ class Page {
     return unique;
   }
   
-  static get group() {
+  static get tree() {
     var pages = Page.pages;
+    var tree = {};
+    var regex = /^(.+?)(?: *\/ *(.+?)(?: *\/ *(.+?))?)?$/;
+    
+    for (var i = 0;i < pages.length;i++) {
+      var page = pages[i];
+      var groups = page.groups;
+      
+      for (var j = 0;j < groups.length;j++) {
+        var match = groups[j]._name.match(regex);
+        
+        if (Object.keys(tree).indexOf(match[1]) == -1) {
+          tree[match[1]] = {pages: [],sub: {}};
+        }
+        if (match.length >= 3 && Object.keys(tree[match[1]].sub).indexOf(match[2]) == -1) {
+          tree[match[1]].sub[match[2]] = {pages: [],sub: {}};
+        }
+        if (match.length >= 4 && Object.keys(tree[match[1]].sub[match[2]].sub).indexOf(match[3]) == -1) {
+          tree[match[1]].sub[match[2]].sub[match[3]] = {pages: []};
+        }
+        
+        if (match.length == 2) {
+          if (tree[match[1]].pages.map(elem => elem.url).indexOf(page.url) == -1) {
+            tree[match[1]].pages.push(page);
+          }
+        } else if (match.length == 3) {
+          if (tree[match[1]].sub[match[2]].pages.map(elem => elem.url).indexOf(page.url) == -1) {
+            tree[match[1]].sub[match[2]].pages.push(page);
+          }
+        } else if (match.length == 4) {
+          if (tree[match[1]].sub[match[2]].sub[match[3]].pages.map(elem => elem.url).indexOf(page.url) == -1) {
+            tree[match[1]].sub[match[2]].sub[match[3]].pages.push(page);
+          }
+        }
+      }
+    }
+    
+    return tree;
   }
   
   constructor(url,title,group,keyword) {
