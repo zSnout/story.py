@@ -1,5 +1,5 @@
 ---
-group: Paradoxes/Numbers
+group: Math/Paradoxes
 ---
 
 # The `0 = 1` Paradox
