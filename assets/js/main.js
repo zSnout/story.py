@@ -30,7 +30,7 @@ class Page {
       var groups = page._groups.split(/ ?\/ ?/g);
       
       for (var j = 0;j < groups.length;j++) {
-        var match = groups[j]._name.match(regex);
+        var match = groups[j].match(regex);
         
         if (Object.keys(tree).indexOf(match[1]) == -1) {
           tree[match[1]] = {pages: [],sub: {}};
