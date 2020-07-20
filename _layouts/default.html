@@ -146,13 +146,13 @@
       }
       
       if (window.location.pathname == "/") {
-        var group = window.location.search.match(/^\?group=([^&]+)$/);
+        var group = window.location.search.match(/^\?group=(.+)$/);
         
         function unique(value,index,self) { 
           return self.indexOf(value) === index;
         }
         
-        if (group && Group.groups.map(elem => elem._name).indexOf(group[1]) != -1) {
+        if (group) {
           var tree = new Tree(group[1]);
           document.getElementById("sitemap").innerHTML = `${group[1]} | <a href='/'>zMath</a>`;
           document.getElementById("comments").insertAdjacentHTML("beforebegin",tree.html);
