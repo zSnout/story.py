@@ -146,24 +146,21 @@
       }
       
       if (window.location.pathname == "/") {
-        var group = window.location.search.match(/^\?group=(.+)$/);
-        
         function unique(value,index,self) { 
           return self.indexOf(value) === index;
         }
         
-        if (group) {
-          var tree = new Tree(group[1]);
-          document.getElementById("sitemap").innerHTML = `${group[1]} | <a href='/'>zMath</a>`;
-          var i = 0;
-          document.getElementById("comments").insertAdjacentHTML("beforebegin",tree.html.replace(/<h[2-6]>/g,function(m) {
-            m = m.match(/<h([2-6])>/);
-            i++;
-            return `<${"h" + m[1]} id="header-${i}">`;
-          }));
-        } else {
-          document.getElementById("sitemap").innerHTML = `Home | <a href='/'>zMath</a>`;
-          document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${Group.groups.map(elem => elem.name.root).filter(unique).map(elem => `<li><a href='/?group=${elem.replace(/ /g,"-")}'>${elem}</a></li>`).join("")}</ul>`);
+        var groups = Group.groups.map(elem => elem.name.root).filter(unique);
+        window.c = 0;
+        for (var i = 0;i < groups.length;i++) {
+          var tree = new Tree(groups[i].replace(/ /g,"-"));
+          window.c++;
+          document.getElementById("comments").insertAdjacentHTML("beforebegin",`<h2 id="header-${c}"></h2>`);
+          document.getElementById("comments").insertAdjacentHTML("beforebegin",tree.html.replace(/h5/g,"h6").replace(/h4/g,"h5").replace(/h3/g,"h4").replace(/h2/g,"h3").replace(/<h[2-6]>/g,function(m) {
+            var m = m.match(/<h([2-6])>/);
+            window.c++;
+            return `<${"h" + m[1]} id="header-${c}">`;
+          }
         }
       }
     </script>
