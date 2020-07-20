@@ -1,5 +1,5 @@
 ---
-group: Trigonometry/Formulas
+group: Math/Trigonometry
 keyword: trig trigonometry
 ---
 
