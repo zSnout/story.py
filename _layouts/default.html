@@ -156,7 +156,8 @@
           var tree = new Tree(group[1]);
           document.getElementById("sitemap").innerHTML = `${group[1]} | <a href='/'>zMath</a>`;
           var i = 0;
-          document.getElementById("comments").insertAdjacentHTML("beforebegin",tree.html.replace(/<h([2-6])>/,function(m) {
+          document.getElementById("comments").insertAdjacentHTML("beforebegin",tree.html.replace(/<h([2-6])>/g,function(m) {
+            console.log(m);
             i++;
             return `<${"h" + m[1]} id="header-${i}">`;
           }));
