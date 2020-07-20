@@ -145,26 +145,17 @@
         new Page(pages[i].url,pages[i].title,pages[i].group,pages[i].keyword);
       }
       
-      /* var tree = Page.tree;
       if (window.location.pathname == "/") {
-        var match = window.location.search.match(/^\?group=([^&]+)$/);
-        if (match && Object.keys(tree).indexOf(match[1]) != -1) {
-          var group = tree[match[1]];
-          var title = match[1] + " | <a href='/'>zMath</a>;
+        var group = window.location.hash;
+        
+        if (Object.keys(Group.groups).indexOf(group) != -1) {
+          document.getElementById("sitemap").innerHTML = `${match[1].replace(/&/g,"&amp;").replace(/</g,"&lt;")} | <a href='#'>zMath</a>`;
+          document.getElementById("comments").insertAdjacentHTML("beforebegin",(new Tree(group)).html);
         } else {
-          var group = {
-            pages: Object.keys(tree).map(function(elem) {
-              return {
-                url: "/?group=" + elem,
-                title: elem
-              }
-            }),
-            all: [],
-            sub: {}
-          };
-          var title = "zMath";
+          document.getElementById("sitemap").innerHTML = "Home | <a href='#'>zMath</a>";
+          document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${Group.groups.filter(elem => elem.type == "root").map(elem => `<li><a href='${"#" + elem._name}'>${elem._name}</a></li>`)}</ul>`);
         }
-      } */
+      }
     </script>
     
     <script>
