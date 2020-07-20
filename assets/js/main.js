@@ -237,6 +237,8 @@ class Tree {
   }
   
   get sub() {
+    var orig = this._name;
+    
     var groups = Group.groups.filter(elem => elem._name.length > orig.length && elem._name.substr(0,orig.length + 1) == orig + "/").map(elem => elem._name);
     var sub = {};
     
