@@ -153,12 +153,17 @@
       if (window.location.pathname == "/") {
         var group = window.location.search.match(/^\?group=([^&]+)$/);
         
+        function unique(value,index,self) { 
+          return self.indexOf(value) === index;
+        }
+        
         if (group && Group.groups.map(elem => elem._name).indexOf(group[1]) != -1) {
-          document.getElementById("sitemap").innerHTML = `${match[1].replace(/&/g,"&amp;").replace(/</g,"&lt;")} | <a href='javascript:void(0)' onclick='refresh()'>zMath</a>`;
-          document.getElementById("comments").insertAdjacentHTML("beforebegin",(new Tree(group)).html);
+          var tree = new Tree(group[1]);
+          document.getElementById("sitemap").innerHTML = `${group[1]} | <a href='javascript:void(0)' onclick='refresh()'>zMath</a>`;
+          document.getElementById("comments").insertAdjacentHTML("beforebegin",tree.html);
         } else {
           document.getElementById("sitemap").innerHTML = `Home | <a href='javascript:void(0)' onclick='refresh()'>zMath</a>`;
-          document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${Group.groups.filter(elem => elem.type == "root").map(elem => `<li><a href='javascript:void(0)' onclick='refresh("${elem._name}")'>${elem._name}</a></li>`).join("")}</ul>`);
+          document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${Group.groups.map(elem => elem.name.root).filter(unique).map(elem => `<li><a href='javascript:void(0)' onclick='refresh("${elem._name}")'>${elem._name}</a></li>`).join("")}</ul>`);
         }
       }
     </script>
