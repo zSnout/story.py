@@ -171,7 +171,7 @@
           document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${group.pages.map(elem => `<li><a href="${elem.url}">${elem.title}</a></li>`).join("")}</ul>`);
         }
         
-        if (group.sub.length != 0) {
+        if (Object.keys(group.sub).length != 0) {
           for (var i = 0;i < Object.keys(group.sub).length;i++) {
             var iKey = Object.keys(group.sub)[i];
             document.getElementById("comments").insertAdjacentHTML("beforebegin",`<h2 id="heading-${i}">${iKey}</h2>`);
@@ -180,7 +180,7 @@
               document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${group.sub[iKey].pages.map(elem => `<li><a href="${elem.url}">${elem.title}</a></li>`).join("")}</ul>`);
             }
             
-            if (group.sub[iKey].sub.length != 0) {
+            if (Object.keys(group.sub[iKey].sub).length != 0) {
               for (var j = 0;j < Object.keys(group.sub[iKey].sub).length;j++) {
                 var jKey = Object.keys(group.sub[iKey].sub)[j];
                 document.getElementById("comments").insertAdjacentHTML("beforebegin",`<h2 id="heading-${i}-${j}">${jKey}</h2>`);
@@ -189,7 +189,7 @@
                   document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${group.sub[iKey].sub[jKey].pages.map(elem => `<li><a href="${elem.url}">${elem.title}</a></li>`).join("")}</ul>`);
                 }
                 
-                if (group.sub[iKey].sub[jKey].sub.length != 0) {
+                if (Object.keys(group.sub[iKey].sub[jKey].sub).length != 0) {
                   for (var k = 0;k < Object.keys(group.sub[iKey].sub[jKey].sub).length;k++) {
                     var kKey = Object.keys(group.sub[iKey].sub[jKey].sub)[k];
                     document.getElementById("comments").insertAdjacentHTML("beforebegin",`<h2 id="heading-${i}-${j}-${k}">${kKey}</h2>`);
