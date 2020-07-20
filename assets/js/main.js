@@ -27,7 +27,7 @@ class Page {
     
     for (var i = 0;i < pages.length;i++) {
       var page = pages[i];
-      var groups = page._groups.split(/ ?\/ ?/g);
+      var groups = page._groups.split(/ ?, ?/g);
       
       for (var j = 0;j < groups.length;j++) {
         var match = groups[j].match(regex);
