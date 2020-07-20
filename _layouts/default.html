@@ -165,7 +165,7 @@
           var title = "All Sections";
         }
         
-        document.getElementById("sitemap").textContent = title;
+        document.getElementById("sitemap").innerHTML = title + " | <a href='/'>zMath</a>";
         
         if (group.pages.length != 0) {
           document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${group.pages.map(elem => `<li><a href="${elem.url}">${elem.title}</a></li>`).join("")}</ul>`);
