@@ -1,5 +1,5 @@
 ---
-group: Integers/Powers
+group: Reference/Tables
 ---
 
 # Powers Of...
