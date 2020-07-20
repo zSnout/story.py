@@ -145,11 +145,6 @@
         new Page(pages[i].url,pages[i].title,pages[i].group,pages[i].keyword);
       }
       
-      function refresh(group) {
-        window.location.search = "?group=" + (group || "");
-        window.location.reload();
-      }
-      
       if (window.location.pathname == "/") {
         var group = window.location.search.match(/^\?group=([^&]+)$/);
         
@@ -159,11 +154,11 @@
         
         if (group && Group.groups.map(elem => elem._name).indexOf(group[1]) != -1) {
           var tree = new Tree(group[1]);
-          document.getElementById("sitemap").innerHTML = `${group[1]} | <a href='javascript:void(0)' onclick='refresh()'>zMath</a>`;
+          document.getElementById("sitemap").innerHTML = `${group[1]} | <a href='/'>zMath</a>`;
           document.getElementById("comments").insertAdjacentHTML("beforebegin",tree.html);
         } else {
-          document.getElementById("sitemap").innerHTML = `Home | <a href='javascript:void(0)' onclick='refresh()'>zMath</a>`;
-          document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${Group.groups.map(elem => elem.name.root).filter(unique).map(elem => `<li><a href='javascript:void(0)' onclick='refresh("${elem}")'>${elem}</a></li>`).join("")}</ul>`);
+          document.getElementById("sitemap").innerHTML = `Home | <a href='/'>zMath</a>`;
+          document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${Group.groups.map(elem => elem.name.root).filter(unique).map(elem => `<li><a href='/?group=${elem.replace(/ /g,"-")}'>${elem}</a></li>`).join("")}</ul>`);
         }
       }
     </script>
