@@ -37,6 +37,52 @@
         "@context": "https://schema.org"
       }
     </script>
+  </head>
+  <body>
+    {%- assign files = site.html_pages -%}
+    {%- assign first = 1 -%}
+    <div id="pages" style="display: none">[
+      {%- for file in files -%}
+        {%- if file.dir == "/posts/" -%}
+          {%- if first != 1 -%}
+            ,
+          {%- endif -%}
+          {% assign first = 0 %}
+          {
+            "url": "{{ file.url | replace: '.html', '' }}",
+            "title": "{{ file.title }}",
+            "group": "{{ file.group | default: "" }}",
+            "keyword": "{{ file.keyword | default: "" | append: " " | append: file.name | replace: '.md', '' }}"
+          }
+        {%- endif -%}
+      {% endfor %}
+    ]</div>
+    
+    <header>
+      <div class="inner">
+        <a href="/">
+          <h1 id="title">zMath</h1>
+        </a>
+        <h2 id="contents"></h2>
+      </div>
+    </header>
+    
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          {{ content }}
+          <h2 id="comments">Comments</h2>
+          <input id="comment" type="text" placeholder="Comment..."><button id="send">Send</button>
+        </section>
+        
+        <aside id="sidebar">
+          <p style="font-weight: bold" id="recently-visited">Recently Visited</p>
+          <p style="font-weight: bold" id="profile">My Account</p>
+          <p style="font-weight: bold" id="sidebar-contents">Contents</p>
+          <p style="font-weight: bold" id="related">Related</p>
+        </aside>
+      </div>
+    </div>
     
     <script>
       function setCookie(cname,cvalue) {
@@ -89,52 +135,6 @@
         }
       }
     </script>
-  </head>
-  <body>
-    {%- assign files = site.html_pages -%}
-    {%- assign first = 1 -%}
-    <div id="pages" style="display: none">[
-      {%- for file in files -%}
-        {%- if file.dir == "/posts/" -%}
-          {%- if first != 1 -%}
-            ,
-          {%- endif -%}
-          {% assign first = 0 %}
-          {
-            "url": "{{ file.url | replace: '.html', '' }}",
-            "title": "{{ file.title }}",
-            "group": "{{ file.group | default: "" }}",
-            "keyword": "{{ file.keyword | default: "" | append: " " | append: file.name | replace: '.md', '' }}"
-          }
-        {%- endif -%}
-      {% endfor %}
-    ]</div>
-    
-    <header>
-      <div class="inner">
-        <a href="/">
-          <h1 id="title">zMath</h1>
-        </a>
-        <h2 id="contents"></h2>
-      </div>
-    </header>
-    
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          {{ content }}
-          <h2 id="comments">Comments</h2>
-          <input id="comment" type="text" placeholder="Comment..."><button id="send">Send</button>
-        </section>
-        
-        <aside id="sidebar">
-          <p style="font-weight: bold" id="recently-visited">Recently Visited</p>
-          <p style="font-weight: bold" id="profile">My Account</p>
-          <p style="font-weight: bold" id="sidebar-contents">Contents</p>
-          <p style="font-weight: bold" id="related">Related</p>
-        </aside>
-      </div>
-    </div>
     
     <script>
       var title = document.getElementsByTagName("title")[0].textContent;
@@ -145,82 +145,41 @@
         new Page(pages[i].url,pages[i].title,pages[i].group,pages[i].keyword);
       }
       
-      /* for (var i = 0;i < pages.length;i++) {
-        pages[i].keyword = pages[i].keyword.toLowerCase().match(/[A-Za-z]{3,}/g);
-        pages[i].related = false;
-        
-        pages[i].group = pages[i].group.split(/ *, * {0}/g);
-        for (var j = 0;j < pages[i].group.length;j++) {
-          pages[i].group[j] = pages[i].group[j].replace(/-/g," ");
-          
-          var match = pages[i].group[j].match(/(.+) *\/ *(.+) *\/ *(.+)/);
-          if (match) {
-            pages[i].group[j] = {
-              type: "subsub",
-              root: match[1],
-              sub: match[2],
-              subsub: match[3]
-            };
-          } else {
-            var match = pages[i].group[j].match(/(.+) *\/ *(.+)/);
-            if (match) {
-              pages[i].group[j] = {
-                type: "sub",
-                root: match[1],
-                sub: match[2]
-              };
-            } else {
-              pages[i].group[j] = {
-                type: "root",
-                root: pages[i].group[j]
-              }
-            }
-          }
-        }
-      }
-      
-      var me = pages.map(elem => elem.url).indexOf(window.location.pathname);
-      var related = [];
-      
-      function addRelated(i,on) {
-        if (!pages[i].related) {
-          related.push(pages[i]);
-          pages[i].related = true;
-          related[related.length - 1].on = [on];
-          delete related[related.length - 1].related;
+      var tree = Page.tree;
+      if (window.location.pathname == "/") {
+        var match = window.location.search.match(/^\?group=([^&]+)$/);
+        if (match && tree.indexOf(match[1]) != -1) {
+          var group = tree[match[1]];
+          var title = match[1];
         } else {
-          related.find(elem => elem.url == pages[i].url).on.push(on);
+          var group = {
+            pages: Object.keys(tree).map(function(elem) {
+              return {
+                url: "/?group=" + elem,
+                title: elem
+              }
+            }),
+            all: [],
+            sub: {}
+          };
+          var title = "All Sections";
+        }
+        
+        document.getElementById("comments").insertAdjacentHTML("beforestart",`<h2 id="title">${title}</h2>`);
+        
+        if (group.pages.length != 0) {
+          document.getElementById("comments").insertAdjacentHTML("beforestart",`<ul>${group.pages.map(elem => `<li><a href="${elem.url}">${elem.title}</a></li>`).join("")}</ul>`);
+        }
+        
+        if (group.sub.length != 0) {
+          for (var i = 0;i < Object.keys(group.sub).length;i++) {
+            document.getElementById("comments").insertAdjacentHTML("beforestart",`<h2 id="heading-${i}">${i}</h2><ul>${group.sub[Object.keys(group.sub)[i]].pages.map(elem => `<li><a href="${elem.url}">${elem.title}</a></li>`).join("")}</ul>`);
+          }
         }
       }
-      
-      if (me != -1) {
-        me = pages[me];
-        for (var i = 0;i < pages.length;i++) {
-          if (pages[i].url == me.url) {
-            continue;
-          }
-          
-          for (var j = 0;j < me.group.length;j++) {
-            if (pages[i].group.indexOf(me.group[j]) != -1) {
-              addRelated(i,me.group[j]);
-            } else if (pages[i].group.map(elem => elem.root).indexOf(me.group[j].root) != -1) {
-              if (me.group[j].sub !== undefined && pages[i].group.map(elem => elem.sub).indexOf(me.group[j].sub) != -1) {
-                addRelated(i,{
-                  type: "sub",
-                  root: me.group[j].root,
-                  sub: me.group[j].sub
-                });
-              } else {
-                addRelated(i,{
-                  type: "root",
-                  root: me.group[j].root
-                });
-              }
-            }
-          }
-        }
-      } */
-      
+    </script>
+    
+    <script>
       var recent = getCookie("recent");
       try {
         recent = JSON.parse(recent);
@@ -257,7 +216,9 @@
       if (recentEl2) {
         recentEl2.insertAdjacentHTML("afterend","<ul>" + recentHTML + "</ul>");
       }
-      
+    </script>
+    
+    <script>
       function escape(text) {
         return text
           .replace(/&/g,"&amp;")
