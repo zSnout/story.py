@@ -160,6 +160,23 @@ class RelatedPage {
 }
 
 class Group {
+  static get groups() {
+    var list = [];
+    for (var i = 0;i < Page.pages.length;i++) {
+      var groups = Page.pages[i].groups.map(elem => elem._name);
+      for (var j = 0;j < groups.length;j++) {
+        if (list.indexOf(groups[j]) == -1) {
+          list.push(groups[j]);
+        }
+      }
+    }
+    
+    var groups = [];
+    for (var i = 0;i < list.length;i++) {
+      groups.push(new Group(list[i]));
+    }
+  }
+  
   constructor(name) {
     this._name = name.replace(/-/g," ");
   }
@@ -187,6 +204,26 @@ class Group {
   
   get pages() {
     return Page.pages.filter(elem => elem.groups.map(el => el._name).indexOf(this._name) != -1);
+  }
+  
+  get tree() {
+    var orig = this._name;
+    
+    var pages = this.pages;
+    var sub = Group.groups.filter(elem => elem._name.length > orig.length && elem._name.substr(0,orig.length + 1) == orig + "/");
+    var obj = {pages: [],all: [],sub: {}};
+    
+    for (var i = 0;i < pages.length;i++) {
+      obj.pages.push(pages[i]);
+      obj.all.push(pages[i]);
+    }
+    
+    for (var i = 0;i < sub.length;i++) {
+      obj.sub[sub[i]] = (new Group(sub[i])).tree;
+      obj.all = obj.all.concat(obj.sub[sub[i]].all);
+    }
+    
+    return tree;
   }
 }
 
