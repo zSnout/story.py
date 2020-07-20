@@ -1,5 +1,5 @@
 ---
-group: Primes
+group: Math/Prime-Numbers
 ---
 
 # Ten Thousand Prime Numbers
