@@ -150,7 +150,7 @@
         var match = window.location.search.match(/^\?group=([^&]+)$/);
         if (match && Object.keys(tree).indexOf(match[1]) != -1) {
           var group = tree[match[1]];
-          var title = match[1];
+          var title = match[1] + " | <a href='/'>zMath</a>;
         } else {
           var group = {
             pages: Object.keys(tree).map(function(elem) {
@@ -162,10 +162,10 @@
             all: [],
             sub: {}
           };
-          var title = "All Sections";
+          var title = "zMath";
         }
         
-        document.getElementById("sitemap").innerHTML = title + " | <a href='/'>zMath</a>";
+        document.getElementById("sitemap").innerHTML = title;
         
         if (group.pages.length != 0) {
           document.getElementById("comments").insertAdjacentHTML("beforebegin",`<ul>${group.pages.map(elem => `<li><a href="${elem.url}">${elem.title}</a></li>`).join("")}</ul>`);
