@@ -35,24 +35,24 @@ class Page {
         if (Object.keys(tree).indexOf(match[1]) == -1) {
           tree[match[1]] = {pages: [],sub: {}};
         }
-        if (match.length >= 3 && Object.keys(tree[match[1]].sub).indexOf(match[2]) == -1) {
+        if (!!match[2] && Object.keys(tree[match[1]].sub).indexOf(match[2]) == -1) {
           tree[match[1]].sub[match[2]] = {pages: [],sub: {}};
         }
-        if (match.length >= 4 && Object.keys(tree[match[1]].sub[match[2]].sub).indexOf(match[3]) == -1) {
+        if (!!match[3] && Object.keys(tree[match[1]].sub[match[2]].sub).indexOf(match[3]) == -1) {
           tree[match[1]].sub[match[2]].sub[match[3]] = {pages: []};
         }
         
-        if (match.length == 2) {
-          if (tree[match[1]].pages.map(elem => elem.url).indexOf(page.url) == -1) {
-            tree[match[1]].pages.push(page);
+        if (match[3]) {
+          if (tree[match[1]].sub[match[2]].sub[match[3]].pages.map(elem => elem.url).indexOf(page.url) == -1) {
+            tree[match[1]].sub[match[2]].sub[match[3]].pages.push(page);
           }
-        } else if (match.length == 3) {
+        } else if (match[2]) {
           if (tree[match[1]].sub[match[2]].pages.map(elem => elem.url).indexOf(page.url) == -1) {
             tree[match[1]].sub[match[2]].pages.push(page);
           }
-        } else if (match.length == 4) {
-          if (tree[match[1]].sub[match[2]].sub[match[3]].pages.map(elem => elem.url).indexOf(page.url) == -1) {
-            tree[match[1]].sub[match[2]].sub[match[3]].pages.push(page);
+        } else {
+          if (tree[match[1]].pages.map(elem => elem.url).indexOf(page.url) == -1) {
+            tree[match[1]].pages.push(page);
           }
         }
       }
