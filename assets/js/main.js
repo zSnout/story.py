@@ -224,7 +224,7 @@ class Tree {
     if (this.pages.length == 0) {
       var pages = [];
     } else {
-      var pages = `<ul>${this.pages.map(elem => `<li><a href='${escape(elem.url)}>${escape(elem.title)}</a></li>`).join("")}</ul>`;
+      var pages = `<ul>${this.pages.map(elem => `<li><a href='${escape(elem.url)}'>${escape(elem.title)}</a></li>`).join("")}</ul>`;
     }
     
     for (var i in this.sub) {
