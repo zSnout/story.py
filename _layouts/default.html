@@ -148,7 +148,7 @@
       var tree = Page.tree;
       if (window.location.pathname == "/") {
         var match = window.location.search.match(/^\?group=([^&]+)$/);
-        if (match && tree.indexOf(match[1]) != -1) {
+        if (match && Object.keys(tree).indexOf(match[1]) != -1) {
           var group = tree[match[1]];
           var title = match[1];
         } else {
