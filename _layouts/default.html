@@ -145,15 +145,15 @@
         new Page(pages[i].url,pages[i].title,pages[i].group,pages[i].keyword);
       }
       
-      function refresh(hash) {
-        window.location.hash = "#" + hash;
+      function refresh(group) {
+        window.location.search = "?group=" + (group || "");
         window.location.reload();
       }
       
       if (window.location.pathname == "/") {
-        var group = window.location.hash.substr(1);
+        var group = window.location.search.match(/^\?group=([^&]+)$/);
         
-        if (Group.groups.map(elem => elem._name).indexOf(group) != -1) {
+        if (group && Group.groups.map(elem => elem._name).indexOf(group[1]) != -1) {
           document.getElementById("sitemap").innerHTML = `${match[1].replace(/&/g,"&amp;").replace(/</g,"&lt;")} | <a href='javascript:void(0)' onclick='refresh()'>zMath</a>`;
           document.getElementById("comments").insertAdjacentHTML("beforebegin",(new Tree(group)).html);
         } else {
