@@ -125,6 +125,7 @@
     <script>
       function story(element) {
         element.innerHTML = highlight(element.textContent,storyRules);
+        element.className += " zsnout-tomorrow";
       }
       
       Array.from(document.querySelectorAll(".language-storymatic")).map(elem => story(elem));
