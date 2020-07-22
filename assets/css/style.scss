@@ -101,3 +101,9 @@ button {
   border-bottom-right-radius: 8px;
   width: var(--width);
 }
+
+li.navi {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
