@@ -139,7 +139,7 @@ class Group {
   }
   
   constructor(name) {
-    this._name = name.replace(/-/g," ");
+    this._name = name;
   }
   
   get type() {
@@ -236,6 +236,27 @@ class Tree {
 }
 
 class Keyword {
+  static get keywords() {
+    var list = [];
+    var pages = Page.pages;
+    
+    for (var i = 0;i < pages.length;i++) {
+      var keywords = pages[i].keywords.map(elem => elem._name);
+      for (var j = 0;j < keywords.length;j++) {
+        if (list.indexOf(keywords[j]) == -1) {
+          list.push(keywords[j]);
+        }
+      }
+    }
+    
+    var keywords = [];
+    for (var i = 0;i < list.length;i++) {
+      keywords.push(new Keyword(list[i]));
+    }
+    
+    return keywords;
+  }
+  
   constructor(keyword) {
     this._keyword = keyword;
   }
