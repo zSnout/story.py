@@ -228,7 +228,7 @@ class Tree {
     }
     
     for (var i in this.sub) {
-      pages += `<h2>${escape(i).replace(/^.+\/([^\/]+)/,"$1")}</h2>${this.sub[i].html.replace(/h5/g,"h6").replace(/h4/g,"h5").replace(/h3/g,"h4").replace(/h2/g,"h3")}`;
+      pages += `<h2>${escape(i).replace(/^.+\/([^\/]+)/,"$1").replace(/-/g," ")}</h2>${this.sub[i].html.replace(/h5/g,"h6").replace(/h4/g,"h5").replace(/h3/g,"h4").replace(/h2/g,"h3")}`;
     }
     
     return pages;
