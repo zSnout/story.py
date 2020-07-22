@@ -156,7 +156,7 @@
         for (var i = 0;i < groups.length;i++) {
           var tree = new Tree(groups[i]);
           window.c++;
-          document.getElementById("comments").insertAdjacentHTML("beforebegin",`<h2 id="header-${c}">${groups[i]}</h2>`);
+          document.getElementById("comments").insertAdjacentHTML("beforebegin",`<h2 id="header-${c}">${groups[i].replace(/-/g," ")}</h2>`);
           document.getElementById("comments").insertAdjacentHTML("beforebegin",tree.html.replace(/h5/g,"h6").replace(/h4/g,"h5").replace(/h3/g,"h4").replace(/h2/g,"h3").replace(/<h[2-6]>/g,function(m) {
             var m = m.match(/<h([2-6])>/);
             window.c++;
