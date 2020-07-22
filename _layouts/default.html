@@ -127,7 +127,11 @@
         // element.innerHTML = highlight(element.textContent,storyRules);
         // element.className += " zsnout-tomorrow";
         
-        ace.edit(element,{
+        var pre = element.parentElement;
+        pre.innerHTML = element.innerHTML;
+        pre.style.height = "100px";
+        
+        ace.edit(pre,{
           minLines: 2
         });
       }
