@@ -6,11 +6,13 @@ group: Basics
 The core foundation of Storymatic is the block and state system.
 
 ## Overview
-A block is a collection of statements to run/output. For example, you might have a block about chocolate ice cream, and a block about vanilla ice cream.
-A state is an alternative name for blocks, but it is usually used to describe the names of blocks, and the internal state that the program is in.
+A block is a collection of statements to run and text to output. `State` is an alternative name for `block`, but it is usually used to describe the names of blocks, and the internal state that the program is in, while `block` is used to describe the statements inside.
 
+Here is an example of a block:
 ``` storymatic
 start
   Hello $name!
-  @menu abc
+  @menu What would you like to do today?
+    ...
 ```
+
