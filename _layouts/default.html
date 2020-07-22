@@ -9,8 +9,8 @@
     <script src="https://zsnout.com/radio/main.js"></script>
     <script src="https://story.zsnout.com/assets/js/main.js"></script>
     
-    <!-- <script src="https://zsnout.com/highlight/main.js"></script>
-    <script src="https://zsnout.com/highlight/storymatic.js"></script> -->
+    <script src="https://zsnout.com/highlight/main.js"></script>
+    <script src="https://zsnout.com/highlight/storymatic.js"></script>
     
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -120,6 +120,14 @@
           setConfig(keys[i],config[keys[i]]);
         }
       }
+    </script>
+    
+    <script>
+      function story(element) {
+        element.innerHTML = highlight(element.textContent,storyRules);
+      }
+      
+      Array.from(document.querySelectorAll(".language-storymatic")).map(elem => story(elem));
     </script>
     
     <script>
