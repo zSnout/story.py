@@ -50,7 +50,7 @@
           {% assign first = 0 %}
           {
             "url": "{{ file.url | replace: '.html', '' }}",
-            "content": "{{ file.content | strip_newlines | replace: '"', '\"' }}",
+            "content": "{{ file.content | strip_newlines | xml_escape }}",
             "title": "{{ file.title }}",
             "group": "{{ file.group | default: "" }}",
             "keyword": "{{ file.keyword | default: "" | append: " " | append: file.name | replace: '.md', '' }}"
