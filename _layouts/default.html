@@ -141,7 +141,7 @@
       var title = document.getElementsByTagName("title")[0].textContent;
       document.getElementById("title").textContent = title;
       
-      var pages = JSON.parse(document.getElementById("pages").textContent);
+      var pages = JSON.parse(document.getElementById("pages").textContent.replace('"','\\"'));
       for (var i = 0;i < pages.length;i++) {
         new Page(pages[i].url,pages[i].title,pages[i].group,pages[i].keyword);
       }
