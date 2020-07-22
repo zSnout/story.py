@@ -50,8 +50,8 @@
           {% assign first = 0 %}
           {
             "url": "{{ file.url | replace: '.html', '' }}",
-            "content": "{{ file.content | strip_newlines | xml_escape | replace: '&quot;', '\&quot;' }}",
             "title": "{{ file.title }}",
+            "content": "{{ file.content | strip_newlines | xml_escape | replace: '&quot;', '\&quot;' }}",
             "group": "{{ file.group | default: "" }}",
             "keyword": "{{ file.keyword | default: "" | append: " " | append: file.name | replace: '.md', '' }}"
           }
@@ -143,7 +143,7 @@
       
       var pages = JSON.parse(document.getElementById("pages").textContent);
       for (var i = 0;i < pages.length;i++) {
-        new Page(pages[i].url,pages[i].title,pages[i].group,pages[i].keyword);
+        new Page(pages[i].url,pages[i].title,pages[i].content,pages[i].group,pages[i].keyword);
       }
       
       if (window.location.pathname == "/") {
