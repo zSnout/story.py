@@ -124,8 +124,9 @@
     <script>
       function story(element) {
         var pre = element.parentElement;
-        pre.innerHTML = element.innerHTML;
+        pre.innerHTML = element.innerHTML.trim();
         pre.style.height = "100px";
+        pre.style.fontSize = "16px";
         
         var editor = ace.edit(pre,{
           showGutter: false,
