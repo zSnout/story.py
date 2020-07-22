@@ -124,15 +124,18 @@
     
     <script>
       function story(element) {
-        // element.innerHTML = highlight(element.textContent,storyRules);
-        // element.className += " zsnout-tomorrow";
-        
         var pre = element.parentElement;
         pre.innerHTML = element.innerHTML;
         pre.style.height = "100px";
         
-        ace.edit(pre,{
-          minLines: 2
+        var editor = ace.edit(pre,{
+          showGutter: false,
+          showPrintMargin: false,
+          readOnly: true,
+          highlightActiveLine: false,
+          highlightSelectedWord: false,
+          theme: "ace/theme/tomorrow",
+          mode: "ace/mode/storymatic"
         });
       }
       
