@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://zsnout.com/highlight/theme.php?q=tomorrow" type="text/css">
     <script src="https://zsnout.com/radio/main.js"></script>
     <script src="https://zsnout.com/highlight/main.js"></script>
+    <script src="https://zsnout.com/highlight/storymatic.js"></script>
     <script src="https://story.zsnout.com/assets/js/main.js"></script>
     
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -125,9 +126,7 @@
       function highlightSM(element) {
         var text = element.textContent;
         
-        var highlighted = highlight(text,{
-          
-        });
+        var highlighted = highlight(text,storyRules);
         
         element.innerHTML = highlighted;
       }
