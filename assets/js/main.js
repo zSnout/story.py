@@ -24,7 +24,7 @@ class Page {
     return unique;
   }
   
-  constructor(url,title,group,keyword) {
+  constructor(url,title,description,group,keyword) {
     if (!Page._pages) {
       Page._pages = [this];
     } else {
@@ -33,6 +33,7 @@ class Page {
     
     this.url = url;
     this.title = title;
+    this.desc = description;
     this._groups = group;
     this._keywords = keyword;
   }
@@ -224,7 +225,7 @@ class Tree {
     if (this.pages.length == 0) {
       var pages = [];
     } else {
-      var pages = `<ul>${this.pages.map(elem => `<li><a href='${escape(elem.url)}'>${escape(elem.title)}</a></li>`).join("")}</ul>`;
+      var pages = `<ul>${this.pages.map(elem => `<li><a href='${escape(elem.url)}'>${escape(elem.title)}</a>: ${escape(elem.desc).length > 50 ? escape(elem.desc).substr(0,50) + "..." : escape(elem.desc)}</li>`).join("")}</ul>`;
     }
     
     for (var i in this.sub) {
