@@ -51,7 +51,7 @@
           {
             "url": "{{ file.url | replace: '.html', '' }}",
             "title": "{{ file.title }}",
-            "content": "{{ file.content | strip_newlines | xml_escape | replace: '&quot;', '\&quot;' }}",
+            "content": "{{ file.content | strip_newlines | xml_escape | replace: '&quot;', '&#92;&quot;' }}",
             "group": "{{ file.group | default: "" }}",
             "keyword": "{{ file.keyword | default: "" | append: " " | append: file.name | replace: '.md', '' }}"
           }
