@@ -131,7 +131,7 @@
         element.innerHTML = highlighted;
       }
       
-      var sm = document.querySelectorAll("div.language-storymatic code");
+      var sm = document.querySelectorAll("code.language-storymatic");
       for (var i = 0;i < sm.length;i++) {
         highlightSM(sm[i]);
         sm[i].setAttribute("class",sm[i].getAttribute("class") + " zsnout-tomorrow");
