@@ -3,7 +3,7 @@ group: Variables
 ---
 
 # Variables
-Variable are an amazing way to store data about the user!
+Variable are an amazing way to store data about the user! Learn how to work with them in this article!
 
 ## Overview
 A variable contains data. It can either be declared as a [global or local variable](#global-vs-local), and can be declared as a local from within a block.
