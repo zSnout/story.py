@@ -98,3 +98,10 @@ start
 
 ## Global vs. Local
 Global variables are not reset when the program switches to a different context, while local variables are.
+
+## Special Variables
+There are two special variables: `@runfrom` and `@reference`.
+
+When you use `@goto` or `@run` to run a different block, `@reference` is set to the state that ran `@goto` or `@run`.
+
+When you use `@context`, `@runfrom` is set to the state that ran `@context`.
