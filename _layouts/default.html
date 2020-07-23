@@ -126,11 +126,15 @@
       
       function story(element) {
         var pre = element.parentElement;
+        var num = Math.floor(1000000 * Math.random()) + "";
         pre.textContent = element.textContent.trim();
         pre.style.height = "100px";
         pre.style.fontSize = "14px";
         pre.className = "storymatic";
-        pre.outerHTML = "<div class='storymatic'>" + pre.outerHTML + "</div>";
+        pre.setAttribute("id",num);
+        pre.outerHTML = `<div class='storymatic'>${pre.outerHTML}</div>`;
+        pre = document.getElementById(num);
+        pre.setAttribute("id","");
         
         var editor = ace.edit(pre,{
           showGutter: false,
