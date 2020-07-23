@@ -140,7 +140,7 @@
           mode: "ace/mode/storymatic",
         });
         
-        pre.style.height = editor.getSession().getDocument().getLength() * editor.renderer.lineHeight + editor.renderer.scrollBar.getWidth() + "px";
+        pre.style.height = editor.getValue().split("\n").legnth * 17 + "px";
         
         stories.push(editor);
       }
