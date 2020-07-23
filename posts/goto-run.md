@@ -26,6 +26,7 @@ start
       You bought vanilla!
     Strawberry
       You bought strawberry!
+  Goodbye!
 
 chocolate
   @menu Would you like milk or dark chocolate?
@@ -37,13 +38,16 @@ chocolate
 
 In the example above, if the user selects `Chocolate`, we go to the state `chocolate`.
 
-In this example below
+## Goto vs. Run
+
+In the example above, the user will not see `Goodbye!` if they selected `Chocolate` because we used `goto`, meaning that when the `chocolate` state ends, the story will end.
+However, in
 ``` storymatic
 start
   Welcome to the ice cream store!
   @menu What flavor would you like to buy?
     Chocolate
-      @goto chocolate
+      @run chocolate
     Vanilla
       You bought vanilla!
     Strawberry
@@ -57,23 +61,4 @@ chocolate
     Milk Chocolate
       You bought milk chocolate!
 ```
-the user will not see `Goodbye!` if they selected `Chocolate` because we used `goto`. However, in
-``` storymatic
-start
-  Welcome to the ice cream store!
-  @menu What flavor would you like to buy?
-    Chocolate
-      @goto chocolate
-    Vanilla
-      You bought vanilla!
-    Strawberry
-      You bought strawberry!
-  Goodbye!
-
-chocolate
-  @menu Would you like milk or dark chocolate?
-    Dark Chocolate
-      You bought dark chocolate!
-    Milk Chocolate
-      You bought milk chocolate!
-```
+we use `@run`, so when the `chocolate` state ends, it will continue the current state, meaning it will show `Goodbye!`.
