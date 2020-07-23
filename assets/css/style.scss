@@ -111,16 +111,19 @@ li.navi {
 .ace-tomorrow .ace_cursor {
   color: transparent !important;
 }
-.ace-tomorrow .ace_highlight {
+.ace-tomorrow .ace_selection {
   background: transparent !important;
 }
 
 div.storymatic {
-  border: 1px solid #c0c0c0;
   padding: 16px;
+  border: 1px solid #f2f2f2;
+  border-radius: 4px;
+  background: white;
 }
 
 pre.storymatic {
-  border: none;
   padding: 0;
+  border: none;
+  margin: 0;
 }
