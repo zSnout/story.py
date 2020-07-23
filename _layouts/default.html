@@ -126,7 +126,7 @@
       
       function story(element) {
         var pre = element.parentElement;
-        pre.innerHTML = element.innerHTML.trim();
+        pre.textContent = element.textContent.trim();
         pre.style.height = "100px";
         pre.style.fontSize = "14px";
         
@@ -137,10 +137,10 @@
           highlightActiveLine: false,
           highlightSelectedWord: false,
           theme: "ace/theme/tomorrow",
-          mode: "ace/mode/storymatic"
+          mode: "ace/mode/storymatic",
         });
         
-        pre.style.height = editor.getValue().split("\n").length * 14 + "px";
+        pre.style.height = editor.getSession().getDocument().getLength() * editor.renderer.lineHeight + editor.renderer.scrollBar.getWidth() + "px";
         
         stories.push(editor);
       }
