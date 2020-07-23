@@ -3,7 +3,7 @@ group: Variables, Input
 ---
 
 # Inputs
-You can also ask the user to type a custom value for a variable.
+You can ask the user to type a custom value for a variable. This article explains how.
 
 ## Asking for Text
 To input for text, use `${varname} = @input`. You can optionally provide a question.
