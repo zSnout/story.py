@@ -126,7 +126,7 @@
         var pre = element.parentElement;
         pre.innerHTML = element.innerHTML.trim();
         pre.style.height = "100px";
-        pre.style.fontSize = "16px";
+        pre.style.fontSize = "14px";
         
         var editor = ace.edit(pre,{
           showGutter: false,
@@ -137,6 +137,8 @@
           theme: "ace/theme/tomorrow",
           mode: "ace/mode/storymatic"
         });
+        
+        pre.style.height = editor.getSession().getDocument().getLength() * editor.renderer.lineHeight + editor.renderer.scrollBar.getWidth() + "px";
       }
       
       Array.from(document.querySelectorAll(".language-storymatic")).map(elem => story(elem));
