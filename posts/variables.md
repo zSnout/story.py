@@ -85,7 +85,7 @@ There's also shortcuts for adding and subtracting one: `${varname}++` and `${var
 
 ### Appending Text
 You can also append text to a variable with `.=`. For example,
-```
+``` storymatic
 $text = a
 
 start
