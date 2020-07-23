@@ -1,3 +1,7 @@
+---
+group: For Developers
+---
+
 # Storymatic
 
  - [`story` Object](#story-object)
