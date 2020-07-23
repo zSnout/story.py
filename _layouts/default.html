@@ -129,12 +129,11 @@
         pre.textContent = element.textContent.trim();
         pre.style.height = "100px";
         pre.style.fontSize = "14px";
-        pre.style.padding = "8px";
         
         var editor = ace.edit(pre,{
           showGutter: false,
           showPrintMargin: false,
-          // readOnly: true,
+          readOnly: true,
           highlightActiveLine: false,
           highlightSelectedWord: false,
           theme: "ace/theme/tomorrow",
