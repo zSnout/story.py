@@ -20,6 +20,8 @@ The indented text (`Hello $name...`) is the block (content). A block must be ind
 
 The part of the story that contains the states and blocks is called the `root section`, or the `root`.
 
+**The root should always contain a state called `start`, which is where your story should start.**
+
 ## More Examples
 
 Here is another example with two states (`chocolate` and `vanilla`):
