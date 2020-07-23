@@ -13,7 +13,7 @@ If `operator` is `<`, `>`, `<=`, or `>=`, then `value` must be a number.
 
 ## Examples
 ```
-$momey > 500
+$money > 500
 $money <= 800
 ```
 
