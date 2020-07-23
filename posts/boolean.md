@@ -21,4 +21,4 @@ In the first example, we are checking whether the `money` variable is less than 
 In the second example, we are checking whether the `money` variable is greater than or equal to `800`.
 
 ## Usage
-Booleans are used in [if blocks](if-blocks), [for loops](for-loops), [while loops](while-loops), and [do-while loops](while-loops).
+Booleans are used in [if blocks](if-block), [for loops](for-loop), [while loops](while-loop), and [do-while loops](while-loop).
