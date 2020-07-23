@@ -1,5 +1,5 @@
 ---
-group: Flow, Variables
+group: Flow
 ---
 
 # Boolean Expressions
