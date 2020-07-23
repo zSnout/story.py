@@ -21,5 +21,14 @@ start
     $money += 50
     @nowait $money
 ```
+The example above will increment `money` by `50` until it is greater than `500`. However, if `money` is already greater than `500`, it will not run.
 
-The example above will increment 
+The example below will do the same thing, but will always increment `money` at least once.
+``` storymatic
+$money = 0
+
+start
+  @dowhile $money <= 500
+    $money += 50
+    @nowait $money
+```
