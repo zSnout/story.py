@@ -1,0 +1,36 @@
+# Storymatic v1.0
+Storymatic v1.0 includes the following components:
+ - State and Block System
+   - Goto
+   - Run
+ - Text
+ - Variables
+   - Types
+     - String
+     - Number
+   - Variables
+   - Special Variables
+   - Inputs
+ - Menus
+ - Contexts
+ - Exit
+   - Exit
+   - Stop
+   - Kill
+ - Raw Text
+   - Raw Text
+   - @base
+   - @pass
+ - If Blocks
+   - If Blocks
+   - Else Blocks
+   - Elseif Blocks
+ - While Loops
+   - While Loops
+     - While {condition}
+   - Do-While Loops
+     - Dowhile {condition}
+ - For Loops
+   - For \_\_;\_\_;\_\_
+ - Repeat Loops
+   - Repeat {x}
