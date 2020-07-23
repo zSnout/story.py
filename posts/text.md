@@ -1,3 +1,7 @@
+---
+group: Basics
+---
+
 # Text
 This article explains how to display (print) text to the user.
 
