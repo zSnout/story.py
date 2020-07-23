@@ -1,5 +1,5 @@
 # Sitemap
-This is a list of all the pages on this site. While the posts are categorized, we recommend reading them in the order below.
+This is a list of all the pages on this site, not necessarily in the order you should read the in. We recommend reading them in the order below.
 
 ## All Articles
  1. [Blocks and States](/posts/blocks)
