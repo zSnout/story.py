@@ -129,6 +129,8 @@
         pre.textContent = element.textContent.trim();
         pre.style.height = "100px";
         pre.style.fontSize = "14px";
+        pre.className = "storymatic";
+        pre.outerHTML = "<div class='storymatic'>" + pre.outerHTML + "</div>";
         
         var editor = ace.edit(pre,{
           showGutter: false,
