@@ -26,3 +26,5 @@ To write a story,
  6. Enjoy!
  7. If you have a Trinket account, you can remix the page to save your story. Otherwise, you may want to sign up to save your story.
 Note that Story.py may not work well on mobile devices.
+
+EDIT: The links and Trinket do not work, and will lead to a 404 page. zSnout now has a better version of Storymatic which is accessible to users at zsnout.com/storymatic.
