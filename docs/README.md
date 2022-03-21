@@ -20,11 +20,12 @@ This is a list of all the pages on this site, not necessarily in the order you s
  14. [For Loops](/posts/for-loop)
 
 To write a story,
- 1. Go to [zSnout's editor](https://zsnout.com/story.py/editor) to create your story. You can directly edit in Trinket, but the editor has syntax highlighting.
- 2. Go to [this Trinket](https://zsnout.com/story.py/).
+ 1. Go to [zSnout's editor](https://zsnout.com/story.py/editor) to create your story. You can directly edit in Trinket, but the editor has syntax highlighting. *This editor has been deprecated.*
+ 2. Go to [this Trinket](https://trinket.io/embed/python/bdbfb8eeea).
  3. Select the 'adventure' tab.
  4. Replace the contents of the 'adventure' tab with your story.
  5. Press the 'Run' button.
  6. Enjoy!
  7. If you have a Trinket account, you can remix the page to save your story. Otherwise, you may want to sign up to save your story.
+
 Note that Story.py may not work well on mobile devices.
