@@ -5,20 +5,20 @@
 Story.py is an amazing story creator that allows you to make interactive, dynamic stories in a quick and easy manner.
 
 This is a list of all the documentation and posts on this site. We recommend reading them in the order below.
- 1. [Blocks and States](/docs/posts/blocks)
- 2. [Text](/docs/posts/text)
- 3. [Menus](/docs/posts/menu)
- 4. [@goto and @run](/docs/posts/goto-run)
- 5. [Variables](/docs/posts/variables)
- 6. [Contexts](/docs/posts/context)
- 7. [Stop and Kill](/docs/posts/exit)
- 8. [Raw Text, @pass, and @base](/docs/posts/raw)
- 9. [Inputs](/docs/posts/input)
- 10. [Boolean Expressions](/docs/posts/boolean)
- 11. [If, Else, and Elseif](/docs/posts/if-block)
- 12. [The Repeat Loop](/docs/posts/repeat-loop)
- 13. [While Loops and Do-While Loops](/docs/posts/while-loop)
- 14. [For Loops](/docs/posts/for-loop)
+ 1. [Blocks and States](./posts/blocks.md)
+ 2. [Text](./posts/text.md)
+ 3. [Menus](./posts/menu.md)
+ 4. [@goto and @run](./posts/goto-run.md)
+ 5. [Variables](./posts/variables.md)
+ 6. [Contexts](./posts/context.md)
+ 7. [Stop and Kill](./posts/exit.md)
+ 8. [Raw Text, @pass, and @base](./posts/raw.md)
+ 9. [Inputs](./posts/input.md)
+ 10. [Boolean Expressions](./posts/boolean.md)
+ 11. [If, Else, and Elseif](./posts/if-block.md)
+ 12. [The Repeat Loop](./posts/repeat-loop.md)
+ 13. [While Loops and Do-While Loops](./posts/while-loop.md)
+ 14. [For Loops](./posts/for-loop.md)
 
 To write a story,
  1. Go to [beta.zSnout.com/storymatic/v1](https://beta.zsnout.com/storymatic/v1).
