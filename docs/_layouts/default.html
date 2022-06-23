@@ -276,84 +276,6 @@
         }
       }).join(""));
       
-      var username = getConfig("username");
-      var password = getConfig("password");
-      
-      function logOut() {
-        setConfig("username","");
-        setConfig("password","");
-        alert("You have been logged out.");
-        window.location.reload();
-      }
-      
-      function logIn() {
-        var username = prompt("Username...");
-        if (!username.match(/^[a-zA-Z0-9_]{2,30}$/)) {
-          alert("Sorry, your username can only have letters, numbers, and underscores, and must be 2-30 characters long.");
-          if (confirm("Would you like to try logging in again?")) {
-            return logIn();
-          } else {
-            return;
-          }
-        }
-        
-        var password = prompt("Password...");
-        if (!password.length >= 8 || password.replace(/[A-Z]/g) == password || password.replace(/[a-z]/g) == password || password.replace(/[0-9]/g) == password) {
-          alert("Sorry, your password MUST have at least one uppercase letter, one lowercase letter, and one number, and must be 8-30 characters long.");
-          if (confirm("Would you like to try logging in again?")) {
-            return logIn();
-          } else {
-            return;
-          }
-        }
-        
-        var confirmation = Math.floor((999999 - 100000) * Math.random() + 100000);
-        var user1 = new Radio("user:" + username,password);
-        user1.send("CONFIRM" + confirmation).then(function() {
-          var user = new Radio("user:" + username,password);
-          user.getAll().then(function(data) {
-            if (data.indexOf("CONFIRM" + confirmation) != -1) {
-              alert("You have been logged in.");
-              setConfig("username",username);
-              setConfig("password",password);
-              return window.location.reload();
-            } else {
-              if (confirm("You failed to log in. Would you like to try again?")) {
-                return logIn();
-              }
-            }
-          });
-        });
-      }
-      
-      if (username == "") {
-        document.getElementById("profile").insertAdjacentHTML("afterend","<p><a href='#' onclick='logIn()'>Log In</a></p>");
-        document.getElementById("profile").insertAdjacentHTML("afterend","<p><a href='#' onclick='logIn()'>Sign Up</a></p>");
-      } else {
-        var login = new Promise(function(resolve,reject) {
-          var confirmation = Math.floor((999999 - 100000) * Math.random() + 100000);
-          var user1 = new Radio("user:" + username,password);
-          user1.send("CONFIRM" + confirmation).then(function() {;
-            var user = new Radio("user:" + username,password);
-            user.getAll().then(function(data) {
-              if (data.indexOf("CONFIRM" + confirmation) != -1) {
-                resolve("SUCCESS");
-              } else {
-                reject("FAIL");
-              }
-            });
-          });
-        });
-        
-        login.then(function() {
-          document.getElementById("profile").insertAdjacentHTML("afterend","<p><a href='#' onclick='logOut()'>Log Out</a></p>");
-          document.getElementById("profile").insertAdjacentHTML("afterend","<p>" + username + "</p>");
-        },function() {
-          document.getElementById("profile").insertAdjacentHTML("afterend","<p><a href='#' onclick='logIn()'>Sign Up</a></p>");
-          document.getElementById("profile").insertAdjacentHTML("afterend","<p><a href='#' onclick='logIn()'>Log In</a></p>");
-        });
-      }
-      
       function getDate() {
         var date = new Date();
         var dateMin = date.getMinutes();
@@ -367,49 +289,6 @@
             (date.getHours() - 12) + ":" + dateMin + " PM" :
             (date.getHours() + ":" + dateMin + " AM"));
       }
-      
-      var comments = document.getElementById("comments");
-      var comment = document.getElementById("comment");
-      var send = document.getElementById("send");
-      Radio.getAll("page:" + window.location.pathname,"").then(function(data) {
-        if (data.length == 0) {
-          send.insertAdjacentHTML("afterend",`<p>This page currently has no comments.</p>`);
-        }
-        
-        for (var i = 0;i < data.length;i++) {
-          var json = JSON.parse(data[i]);
-          send.insertAdjacentHTML("afterend",`<p>At <strong>${escape(json.time)}</strong>, <strong>${escape(json.user)}</strong> said “<em>${escape(json.content)}</em>”</p>`);
-        }
-      });
-      
-      login.then(function() {
-        comment.style.display = "inline-block";
-        send.style.display = "inline-block";
-
-        function sendComment() {
-          var json = {
-            time: getDate(),
-            user: getConfig("username"),
-            content: comment.value
-          };
-
-          var output = `<p>At <strong>${escape(json.time)}</strong>, <strong>${escape(json.user)}</strong> said <em>${escape(json.content)}</em></p>`;
-          Radio.send(JSON.stringify(json),"page:" + window.location.pathname,"");
-
-          send.insertAdjacentHTML("afterend",output);
-          comment.value = "";
-        }
-
-        comment.addEventListener("keydown",function(evt) {
-          if (evt.keyCode == 13) {
-            sendComment();
-          }
-        });
-
-        send.addEventListener("click",function() {
-          sendComment();
-        });
-      });
     </script>
   </body>
 </html>
