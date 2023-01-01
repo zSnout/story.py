@@ -1,4 +1,4 @@
-> ***ARCHIVE NOTICE:*** This language is no longer recieving updates. For a newer, more complete, yet simple language, check out [Storymatic 3](https://beta.zSnout.com/storymatic/v3).
+> ***ARCHIVE NOTICE:*** This language is no longer recieving updates. Newer versions are available at [zSnout.com/storymatic](https://zsnout.com/storymatic)
 
 # Sitemap
 
@@ -21,7 +21,7 @@ This is a list of all the documentation and posts on this site. We recommend rea
  14. [For Loops](./posts/for-loop.md)
 
 To write a story,
- 1. Go to [beta.zSnout.com/storymatic/v1](https://beta.zsnout.com/storymatic/v1).
+ 1. Go to [zSnout.com/storymatic/v1-editor](https://beta.zsnout.com/storymatic/v1-editor).
  2. Write your story in the box to the left.
  4. Press the 'Execute' button.
  5. Enjoy!
